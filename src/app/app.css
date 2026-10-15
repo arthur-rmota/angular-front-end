@@ -42,3 +42,17 @@ nav a.ativo {
   margin: 0 auto;
   padding: 24px 16px;
 }
+
+.marca img {
+  height: 60px;
+  margin: auto;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
