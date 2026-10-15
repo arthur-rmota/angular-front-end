@@ -3,13 +3,14 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { Api } from '../../api';
 import { formatarData, rotuloPrioridade, rotuloStatus } from '../../rotulos';
+import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
 
 @Component({
   selector: 'app-detalhe-tarefa',
-  imports: [RouterLink],
+  imports: [RouterLink, NaoEncontrada],
   template: `
-    <a routerLink="/">← Voltar para as tarefas</a>
     @if (tarefa.hasValue()) {
+      <a routerLink="/">← Voltar para as tarefas</a>
       @let t = tarefa.value();
       <h1>{{ t.titulo }}</h1>
       <dl class="campos">
@@ -20,7 +21,9 @@ import { formatarData, rotuloPrioridade, rotuloStatus } from '../../rotulos';
         <dt>Prazo</dt><dd>{{ formatarData(t.prazo) }}</dd>
         <dt>Projeto</dt><dd><a [routerLink]="['/projetos', t.projetoId]">Ver projeto</a></dd>
       </dl>
-    }
+    } @else {
+      <app-nao-encontrada />
+    } 
   `,
 })
 export class DetalheTarefa {
