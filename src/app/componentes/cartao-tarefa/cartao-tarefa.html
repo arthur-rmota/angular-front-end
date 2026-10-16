@@ -1,11 +1,33 @@
 <article class="cartao">
-  <h3><a [routerLink]="['/tarefas', tarefa().id]">{{ tarefa().titulo }}</a></h3>
-  <div class="etiquetas">
-    <span class="status status-{{ tarefa().status }}">{{ rotuloStatus[tarefa().status] }}</span>
-    <span class="prioridade prioridade-{{ tarefa().prioridade }}">Prioridade {{ rotuloPrioridade[tarefa().prioridade] }}</span>
+  <span class="barra-lateral" aria-hidden="true"></span>
+
+  <div class="cartao-conteudo">
+    <h3>
+      <a [routerLink]="['/tarefas', tarefa().id]">
+        {{ tarefa().titulo }}
+      </a>
+    </h3>
+
+    <div class="etiquetas">
+      <span class="status status-{{ tarefa().status }}">
+        {{ rotuloStatus[tarefa().status] }}
+      </span>
+
+      <span class="prioridade prioridade-{{ tarefa().prioridade }}">
+        Prioridade {{ rotuloPrioridade[tarefa().prioridade] }}
+      </span>
+    </div>
+
+    <p class="info">
+      <span class="responsavel">
+        <span class="icone-info" aria-hidden="true">👤</span>
+        {{ tarefa().responsavel }}
+      </span>
+
+      <span class="prazo">
+        <span class="icone-info" aria-hidden="true">🗓️</span>
+        {{ formatarData(tarefa().prazo) }}
+      </span>
+    </p>
   </div>
-  <p class="info">
-    <span>👤 {{ tarefa().responsavel }}</span>
-    <span>📅 {{ formatarData(tarefa().prazo) }}</span>
-  </p>
 </article>

@@ -39,7 +39,7 @@
         {
             "id": "3",
             "projetoId": "1",
-            "titulo": "Montar o quadro no GitHub Projects",
+            "titulo": "Montar o quadro GitHub Projects",
             "descricao": "Colunas por status e uma tarefa por marco",
             "status": "em-revisao",
             "prioridade": "media",
@@ -65,6 +65,18 @@
             "prioridade": "baixa",
             "responsavel": "Ana",
             "prazo": "2026-10-20"
+        },
+
+        {
+            "id": "6",
+            "projetoId": "2",
+            "titulo": "Criar as tabelas do banco de dados",
+            "descricao": "Implementar as tabelas livro, leitor e empréstimo com seus respectivos relacionamentos",
+            "status": "a-fazer",
+            "prioridade": "media",
+            "responsavel": "Bruno",
+            "prazo": "2026-10-22"
         }
+
     ]
 }
