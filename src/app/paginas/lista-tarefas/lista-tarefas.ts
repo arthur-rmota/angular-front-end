@@ -7,7 +7,7 @@ import { CartaoTarefa } from '../../componentes/cartao-tarefa/cartao-tarefa';
   selector: 'app-lista-tarefas',
   imports: [CartaoTarefa],
   template: `
-    <h1>Tarefas</h1>
+<div class="heading"><span class="spark"></span><h1>Tarefas</h1></div>
     @if (tarefas.hasValue()) {
       <div class="grade">
         @for (tarefa of tarefas.value(); track tarefa.id) {

@@ -7,7 +7,7 @@ import { Api } from '../../api';
   selector: 'app-lista-projetos',
   imports: [RouterLink],
   template: `
-    <h1>Projetos</h1>
+  <div class="heading"><span class="spark"></span><h1>Projetos</h1></div>
     @if (projetos.hasValue()) {
       <ul class="lista-projetos">
         @for (projeto of projetos.value(); track projeto.id) {
