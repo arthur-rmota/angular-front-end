@@ -1,0 +1,80 @@
+.formulario {
+  display: grid;
+  gap: 16px;
+  max-width: 640px;
+
+  padding: 24px;
+
+  background: #fff;
+  border: 1px solid #e2e2ea;
+  border-radius: 10px;
+}
+
+.linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+
+  color: #555;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  padding: 10px 12px;
+
+  color: var(--navy);
+  font: inherit;
+  font-weight: 400;
+
+  background: #fff;
+  border: 1px solid #d4d2e6;
+  border-radius: 8px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--purple);
+  outline-offset: 1px;
+}
+
+.ng-invalid.ng-touched {
+  border-color: #d93a6f;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  justify-self: start;
+
+  padding: 10px 22px;
+
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+
+  background: var(--purple);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+@media (max-width: 680px) {
+  .linha {
+    grid-template-columns: 1fr;
+  }
+}
