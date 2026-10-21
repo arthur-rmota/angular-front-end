@@ -17,6 +17,7 @@ import { formatarData } from '../../rotulos';
       <p class="detalhes">{{ p.disciplina }} · criado em {{ formatarData(p.criadoEm) }}</p>
 
       <h2>Tarefas do projeto</h2>
+      <p><a routerLink="/tarefas/nova" [queryParams]="{ projetoId: p.id }">+ Nova tarefa neste projeto</a></p>
       <div class="grade">
         @for (tarefa of p.tarefas; track tarefa.id) {
           <app-cartao-tarefa [tarefa]="tarefa" />

@@ -1,13 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
+import { RouterLink } from '@angular/router';
 import { Api } from '../../api';
 import { CartaoTarefa } from '../../componentes/cartao-tarefa/cartao-tarefa';
 
 @Component({
   selector: 'app-lista-tarefas',
-  imports: [CartaoTarefa],
+  imports: [RouterLink, CartaoTarefa],
   template: `
 <div class="heading"><span class="spark"></span><h1>Tarefas</h1></div>
+    <p><a routerLink="/tarefas/nova">+ Nova tarefa</a></p>
     @if (tarefas.hasValue()) {
       <div class="grade">
         @for (tarefa of tarefas.value(); track tarefa.id) {
