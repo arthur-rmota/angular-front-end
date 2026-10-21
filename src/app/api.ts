@@ -1,9 +1,14 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import type { Projeto, Tarefa } from '../tipos';
+import type { NovaTarefa, Projeto, Tarefa } from '../tipos';
 
 export type ProjetoComTarefas = Projeto & { tarefas: Tarefa[] };
+export type NovoProjeto = Omit<Projeto, 'id' | 'criadoEm'>;
+
+function hoje(): string {
+  return new Date().toLocaleDateString('sv-SE');
+}
 
 @Injectable({ providedIn: 'root' })
 export class Api {
