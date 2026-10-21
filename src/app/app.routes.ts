@@ -4,12 +4,14 @@ import { DetalheTarefa } from './paginas/detalhe-tarefa/detalhe-tarefa';
 import { ListaProjetos } from './paginas/lista-projetos/lista-projetos';
 import { PaginaProjeto } from './paginas/pagina-projeto/pagina-projeto';
 import { NovaTarefa } from './paginas/nova-tarefa/nova-tarefa';
+import { EditarTarefa } from './paginas/editar-tarefa/editar-tarefa';
 import { NaoEncontrada } from './paginas/nao-encontrada/nao-encontrada';
 
 export const routes: Routes = [
   { path: '', component: ListaTarefas, title: 'Tarefas' },
   { path: 'tarefas/nova', component: NovaTarefa, title: 'Nova tarefa' },
   { path: 'tarefas/:id', component: DetalheTarefa, title: 'Tarefa' },
+  { path: 'tarefas/:id/editar', component: EditarTarefa, title: 'Editar tarefa' },
   { path: 'projetos', component: ListaProjetos, title: 'Projetos' },
   { path: 'projetos/:id', component: PaginaProjeto, title: 'Projeto' },
   { path: '**', component: NaoEncontrada, title: 'Página não encontrada' },
