@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { Api } from '../../api';
 import { FormularioTarefa } from '../../componentes/formulario-tarefa/formulario-tarefa';
 import type { NovaTarefa as DadosTarefa } from '../../../tipos';
+import { sign } from 'crypto';
 
 @Component({
   selector: 'app-nova-tarefa',
@@ -10,6 +11,7 @@ import type { NovaTarefa as DadosTarefa } from '../../../tipos';
   template: `
     <a routerLink="/">← Voltar para as tarefas</a>
     <div class="heading"><span class="spark"></span><h1>Nova tarefa</h1></div>
+    @if (erroApi()) { <p class="erro" role="alert">⚠ {{ erroApi() }}</p> }
     <app-formulario-tarefa
       [valorInicial]="valorInicial()"
       textoBotao="Criar tarefa"
@@ -28,8 +30,17 @@ export class NovaTarefa {
   valorInicial = computed(() => (this.projetoId() ? { projetoId: this.projetoId() } : {}));
   salvando = signal(false);
 
-  criar(tarefa: DadosTarefa) {
+  erroApi = signal('');
+  
+    criar(tarefa: DadosTarefa) {
     this.salvando.set(true);
-    this.api.criarTarefa(tarefa).subscribe(() => this.router.navigate(['/']));
+    this.erroApi.set('')
+    this.api.criarTarefa(tarefa).subscribe({
+    next: () => this.router.navigate(['/']),
+    error: () => {
+      this.salvando.set(false);
+      this.erroApi.set('Não foi possível salvar. Verifique a API e tente novamente.');
+    },
+  });
   }
 }
