@@ -9,17 +9,21 @@ import { formatarData } from '../../rotulos';
   selector: 'app-pagina-projeto',
   imports: [RouterLink, CartaoTarefa],
   template: `
-    <a routerLink="/projetos">← Voltar para os projetos</a>
     @if (projeto.hasValue()) {
       @let p = projeto.value();
       <h1>{{ p.nome }}</h1>
       <p>{{ p.descricao }}</p>
       <p class="detalhes">{{ p.disciplina }} · criado em {{ formatarData(p.criadoEm) }}</p>
-      <p><a [routerLink]="['/projetos', p.id, 'editar']">Editar projeto</a></p>
 
+      <div class="acoes">
+        <a class="botao" routerLink="/projetos" >← Voltar para os projetos</a>
+        <a class="botao" [routerLink]="['/projetos', p.id, 'editar']">Editar projeto</a>
+      </div>
 
       <h2>Tarefas do projeto</h2>
-      <p><a routerLink="/tarefas/nova" [queryParams]="{ projetoId: p.id }">+ Nova tarefa neste projeto</a></p>
+      <div class="acoes">
+        <a class="botao" routerLink="/tarefas/nova" [queryParams]="{ projetoId: p.id }">+ Nova tarefa neste projeto</a>
+      </div>
       <div class="grade">
         @for (tarefa of p.tarefas; track tarefa.id) {
           <app-cartao-tarefa [tarefa]="tarefa" />

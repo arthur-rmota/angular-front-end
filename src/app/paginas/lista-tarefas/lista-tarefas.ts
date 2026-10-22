@@ -9,7 +9,9 @@ import { CartaoTarefa } from '../../componentes/cartao-tarefa/cartao-tarefa';
   imports: [RouterLink, CartaoTarefa],
   template: `
 <div class="heading"><span class="spark"></span><h1>Tarefas</h1></div>
-    <p><a routerLink="/tarefas/nova">+ Nova tarefa</a></p>
+    <div class="acoes">
+      <a routerLink="/tarefas/nova" class="botao">+ Nova tarefa</a>
+    </div>
     @if (tarefas.hasValue()) {
       <div class="grade">
         @for (tarefa of tarefas.value(); track tarefa.id) {

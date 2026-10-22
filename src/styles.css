@@ -193,9 +193,116 @@ a {
     font-size: 43px;
   }
 
-  @media (max-width: 680px) {
   .pagina-formulario {
     max-width: 100%;
   }
 }
+
+/* ========================================
+   BOTÕES (links com cara de botão)
+======================================== */
+
+.botao,
+.botao-secundario {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 22px;
+
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+
+  border: 2px solid var(--purple);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+
+.botao {
+  color: #fff;
+  background: var(--purple);
+}
+
+.botao:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  transform: translateY(-1px);
+}
+
+.botao-secundario {
+  color: var(--purple);
+  background: #fff;
+}
+
+.botao-secundario:hover {
+  background: var(--lavender);
+}
+
+.botao:focus-visible,
+.botao-secundario:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 2px;
+}
+
+/* Linha que agrupa os botões de ação */
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 24px;
+}
+
+/* Botões (links com cara de botão) */
+.botao,
+.botao-secundario {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 22px;
+
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+
+  border: 2px solid var(--purple);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+
+.botao {
+  color: #fff;
+  background: var(--purple);
+}
+
+.botao:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  transform: translateY(-1px);
+}
+
+.botao-secundario {
+  color: var(--purple);
+  background: #fff;
+}
+
+.botao-secundario:hover {
+  background: var(--lavender);
+}
+
+.botao:focus-visible,
+.botao-secundario:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 2px;
+}
+
+/* Linha que agrupa os botões de ação */
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 24px;
 }

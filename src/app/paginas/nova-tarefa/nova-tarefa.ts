@@ -9,9 +9,11 @@ import { sign } from 'crypto';
   selector: 'app-nova-tarefa',
   imports: [RouterLink, FormularioTarefa],
   template: `
-    <a routerLink="/">← Voltar para as tarefas</a>
     <div class="heading"><span class="spark"></span><h1>Nova tarefa</h1></div>
-    @if (erroApi()) { <p class="erro" role="alert">⚠ {{ erroApi() }}</p> }
+    <div class="acoes">
+      <a routerLink="/" class="botao">← Voltar para as tarefas</a>
+    </div>
+    @if (erroApi()) { <p class="erro" role="alert">⚠ {{ erroApi() }}</p> } 
     <app-formulario-tarefa
       [valorInicial]="valorInicial()"
       textoBotao="Criar tarefa"

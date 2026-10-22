@@ -8,7 +8,9 @@ import { Api } from '../../api';
   imports: [RouterLink],
   template: `
   <div class="heading"><span class="spark"></span><h1>Projetos</h1></div>
-  <p><a routerLink="/projetos/novo">+ Novo projeto</a></p>
+  <div class="acoes">
+    <a routerLink="/projetos/novo" class="botao">+ Novo projeto</a>
+  </div>
     @if (projetos.hasValue()) {
       <ul class="lista-projetos">
         @for (projeto of projetos.value(); track projeto.id) {

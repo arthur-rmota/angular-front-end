@@ -7,8 +7,10 @@ import { FormularioProjeto } from '../../componentes/formulario-projeto/formular
   selector: 'app-novo-projeto',
   imports: [RouterLink, FormularioProjeto],
   template: `
-    <a routerLink="/projetos">← Voltar para os projetos</a>
     <div class="heading"><span class="spark"></span><h1>Novo projeto</h1></div>
+    <div class="acoes">
+          <a routerLink="/projetos" class="botao">← Voltar para os projetos</a>
+    </div>
     @if (erroApi()) { <p class="erro" role="alert">⚠ {{ erroApi() }}</p> }
     <app-formulario-projeto textoBotao="Criar projeto" [salvando]="salvando()" (salvar)="criar($event)" />
   `,
