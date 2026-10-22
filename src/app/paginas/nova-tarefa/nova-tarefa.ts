@@ -9,17 +9,20 @@ import { sign } from 'crypto';
   selector: 'app-nova-tarefa',
   imports: [RouterLink, FormularioTarefa],
   template: `
+    <div class="pagina-formulario">
     <div class="heading"><span class="spark"></span><h1>Nova tarefa</h1></div>
     <div class="acoes">
       <a routerLink="/" class="botao">← Voltar para as tarefas</a>
     </div>
     @if (erroApi()) { <p class="erro" role="alert">⚠ {{ erroApi() }}</p> } 
-    <app-formulario-tarefa
+    
+      <app-formulario-tarefa
       [valorInicial]="valorInicial()"
       textoBotao="Criar tarefa"
       [salvando]="salvando()"
       (salvar)="criar($event)"
-    />
+      />
+    </div>
   `,
 })
 export class NovaTarefa {
