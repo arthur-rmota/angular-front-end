@@ -29,7 +29,9 @@
         {{ formatarData(tarefa().prazo) }}
       </span>
       
-        <p><a [routerLink]="['/tarefas', tarefa().id, 'editar']">Editar tarefa</a></p>
+        <div class="acoes">
+          <a [routerLink]="['/tarefas', tarefa().id, 'editar']" class="botao-tarefa">Editar tarefa</a>
+        </div>
     
   </div>
 </article>

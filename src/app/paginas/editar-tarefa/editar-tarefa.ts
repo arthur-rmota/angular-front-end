@@ -12,8 +12,10 @@ import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
   template: `
     @if (tarefa.hasValue()) {
       <div class="pagina-formulario">
-        <a [routerLink]="['/tarefas', id()]">← Voltar para a tarefa</a>
         <div class="heading"><span class="spark"></span><h1>Editar tarefa</h1></div>
+        <div class="acoes">
+          <a [routerLink]="['/tarefas', id()]" class="botao">← Voltar para a tarefa</a>
+        </div>
         <app-formulario-tarefa
           [valorInicial]="tarefa.value()"
           textoBotao="Salvar alterações"

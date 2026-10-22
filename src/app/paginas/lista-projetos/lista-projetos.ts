@@ -15,7 +15,7 @@ import { Api } from '../../api';
       <ul class="lista-projetos">
         @for (projeto of projetos.value(); track projeto.id) {
           <li>
-            <a [routerLink]="['/projetos', projeto.id]">{{ projeto.nome }}</a>
+            <a [routerLink]="['/projetos', projeto.id]"class="botao-secundario">{{ projeto.nome }}</a>
             <span>{{ projeto.disciplina }}</span>
           </li>
         }

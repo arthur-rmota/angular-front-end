@@ -10,9 +10,11 @@ import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
   imports: [RouterLink, NaoEncontrada],
   template: `
     @if (tarefa.hasValue()) {
-      <a routerLink="/">← Voltar para as tarefas</a>
       @let t = tarefa.value();
       <h1>{{ t.titulo }}</h1>
+      <div class="acoes">
+        <a routerLink="/" class="botao">← Voltar para as tarefas</a>
+      </div>
       <dl class="campos">
         <dt>Descrição</dt><dd>{{ t.descricao }}</dd>
         <dt>Status</dt><dd>{{ rotuloStatus[t.status] }}</dd>
@@ -21,7 +23,7 @@ import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
         <dt>Prazo</dt><dd>{{ formatarData(t.prazo) }}</dd>
         <dt>Projeto</dt><dd><a [routerLink]="['/projetos', t.projetoId]">Ver projeto</a></dd>
       </dl>
-      <p><a [routerLink]="['/tarefas', t.id, 'editar']">Editar tarefa</a></p>
+      <p><a [routerLink]="['/tarefas', t.id, 'editar']" class="botao">Editar tarefa</a></p>
     } @else {
       <app-nao-encontrada />
     } 
