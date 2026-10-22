@@ -22,8 +22,9 @@ import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
         <dt>Responsável</dt><dd>{{ t.responsavel }}</dd>
         <dt>Prazo</dt><dd>{{ formatarData(t.prazo) }}</dd>
         <dt>Projeto</dt><dd><a [routerLink]="['/projetos', t.projetoId]">Ver projeto</a></dd>
+        <p><a [routerLink]="['/tarefas', t.id, 'editar']" class="botao">Editar tarefa</a></p>
       </dl>
-      <p><a [routerLink]="['/tarefas', t.id, 'editar']" class="botao">Editar tarefa</a></p>
+      
     } @else {
       <app-nao-encontrada />
     } 
