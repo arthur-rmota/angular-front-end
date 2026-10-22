@@ -1,82 +1,125 @@
 {
-    "projetos": [
-        {
-            "id": "1",
-            "nome": "Gerenciador de Tarefas",
-            "descricao": "Projeto em equipe da disciplina",
-            "disciplina": "Desenvolvimento Frontend",
-            "criadoEm": "2026-10-01"
-        },
-        {
-            "id": "2",
-            "nome": "Modelagem da Biblioteca",
-            "descricao": "Trabalho de modelagem de dados",
-            "disciplina": "Banco de Dados",
-            "criadoEm": "2026-10-02"
-        }
-    ],
-    "tarefas": [
-        {
-            "id": "1",
-            "projetoId": "1",
-            "titulo": "Criar o repositório",
-            "descricao": "Repositório da equipe no GitHub, com todos os integrantes",
-            "status": "concluida",
-            "prioridade": "alta",
-            "responsavel": "Ana",
-            "prazo": "2026-10-06"
-        },
-        {
-            "id": "2",
-            "projetoId": "1",
-            "titulo": "Subir o json-server",
-            "descricao": "API local a partir do db.json",
-            "status": "em-andamento",
-            "prioridade": "alta",
-            "responsavel": "Bruno",
-            "prazo": "2026-10-06"
-        },
-        {
-            "id": "3",
-            "projetoId": "1",
-            "titulo": "Montar o quadro GitHub Projects",
-            "descricao": "Colunas por status e uma tarefa por marco",
-            "status": "em-revisao",
-            "prioridade": "media",
-            "responsavel": "Carla",
-            "prazo": "2026-10-07"
-        },
-        {
-            "id": "4",
-            "projetoId": "1",
-            "titulo": "Listar as tarefas na tela",
-            "descricao": "Primeira entrega do Marco 2",
-            "status": "a-fazer",
-            "prioridade": "media",
-            "responsavel": "Diego",
-            "prazo": "2026-10-14"
-        },
-        {
-            "id": "5",
-            "projetoId": "2",
-            "titulo": "Desenhar o diagrama ER",
-            "descricao": "Entidades livro, leitor e empréstimo",
-            "status": "a-fazer",
-            "prioridade": "baixa",
-            "responsavel": "Ana",
-            "prazo": "2026-10-20"
-        },
-
-        {
-            "id": "6",
-            "projetoId": "2",
-            "titulo": "Criar as tabelas do banco de dados",
-            "descricao": "Implementar as tabelas livro, leitor e empréstimo com seus respectivos relacionamentos",
-            "status": "a-fazer",
-            "prioridade": "media",
-            "responsavel": "Bruno",
-            "prazo": "2026-10-22"
-        }
-
-    ]
+  "projetos": [
+    {
+      "id": "1",
+      "nome": "Gerenciador de Tarefas",
+      "descricao": "Projeto em equipe da disciplina",
+      "disciplina": "Desenvolvimento Frontend",
+      "criadoEm": "2026-10-01"
+    },
+    {
+      "id": "2",
+      "nome": "Modelagem da Biblioteca",
+      "descricao": "Trabalho de modelagem de dados",
+      "disciplina": "Banco de Dados",
+      "criadoEm": "2026-10-02"
+    },
+    {
+      "nome": "Desenvolvimento de Loja Virtual",
+      "descricao": "Criação de uma loja virtual com catálogo de produtos e gerenciamento de pedidos",
+      "disciplina": "Desenvolvimento-Front-end",
+      "criadoEm": "2026-10-22",
+      "id": "rZ0GtiL90Gc"
+    },
+    {
+      "nome": "Desenvolvimento App",
+      "descricao": "transformar o site em app",
+      "disciplina": "Desenvolvimento Mobile",
+      "criadoEm": "2026-10-22",
+      "id": "Y9gw08Zic-w"
+    }
+  ],
+  "tarefas": [
+    {
+      "id": "1",
+      "projetoId": "1",
+      "titulo": "Criar o repositório",
+      "descricao": "Repositório da equipe no GitHub, com todos os integrantes",
+      "status": "concluida",
+      "prioridade": "alta",
+      "responsavel": "Maria",
+      "prazo": "2026-10-06"
+    },
+    {
+      "id": "2",
+      "projetoId": "1",
+      "titulo": "Subir o json-server",
+      "descricao": "API local a partir do db.json",
+      "status": "em-andamento",
+      "prioridade": "alta",
+      "responsavel": "Bruno",
+      "prazo": "2026-10-06"
+    },
+    {
+      "id": "3",
+      "projetoId": "1",
+      "titulo": "Montar o quadro GitHub Projects",
+      "descricao": "Colunas por status e uma tarefa por marco",
+      "status": "em-revisao",
+      "prioridade": "media",
+      "responsavel": "Carla",
+      "prazo": "2026-10-07"
+    },
+    {
+      "id": "4",
+      "projetoId": "1",
+      "titulo": "Listar as tarefas na tela",
+      "descricao": "Primeira entrega do Marco 2",
+      "status": "a-fazer",
+      "prioridade": "media",
+      "responsavel": "Diego",
+      "prazo": "2026-10-14"
+    },
+    {
+      "id": "5",
+      "projetoId": "2",
+      "titulo": "Desenhar o diagrama ER",
+      "descricao": "Entidades livro, leitor e empréstimo",
+      "status": "a-fazer",
+      "prioridade": "baixa",
+      "responsavel": "Maria",
+      "prazo": "2026-10-20"
+    },
+    {
+      "id": "6",
+      "projetoId": "2",
+      "titulo": "Criar as tabelas do banco de dados",
+      "descricao": "Implementar as tabelas livro, leitor e empréstimo com seus respectivos relacionamentos",
+      "status": "a-fazer",
+      "prioridade": "media",
+      "responsavel": "Bruno",
+      "prazo": "2026-10-22"
+    },
+    {
+      "titulo": "Atualizar github projects",
+      "descricao": "",
+      "projetoId": "1",
+      "status": "em-andamento",
+      "prioridade": "baixa",
+      "responsavel": "arthur",
+      "prazo": "2026-10-30",
+      "id": "W2oR3SkoVzo"
+    },
+    {
+      "titulo": "Implementar formulário de criação de tarefas",
+      "descricao": "Criar formulário com validação dos campos obrigatórios e integração com a API para cadastrar novas tarefas",
+      "projetoId": "1",
+      "status": "a-fazer",
+      "prioridade": "alta",
+      "responsavel": "Rebeca",
+      "prazo": "2026-10-25",
+      "id": "2JAmyWK86m8"
+    },
+    {
+      "titulo": "Implementar relacionamentos",
+      "descricao": "Definir as chaves primárias e estrangeiras para relacionar livros, leitores e empréstimos no banco de dados",
+      "projetoId": "2",
+      "status": "a-fazer",
+      "prioridade": "media",
+      "responsavel": "Arthur",
+      "prazo": "2026-12-31",
+      "id": "VIXmCVrR15s"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
