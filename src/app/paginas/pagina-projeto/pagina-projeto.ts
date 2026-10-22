@@ -15,6 +15,8 @@ import { formatarData } from '../../rotulos';
       <h1>{{ p.nome }}</h1>
       <p>{{ p.descricao }}</p>
       <p class="detalhes">{{ p.disciplina }} · criado em {{ formatarData(p.criadoEm) }}</p>
+      <p><a [routerLink]="['/projetos', p.id, 'editar']">Editar projeto</a></p>
+
 
       <h2>Tarefas do projeto</h2>
       <p><a routerLink="/tarefas/nova" [queryParams]="{ projetoId: p.id }">+ Nova tarefa neste projeto</a></p>

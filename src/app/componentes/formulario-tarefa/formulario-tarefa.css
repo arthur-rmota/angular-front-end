@@ -9,17 +9,10 @@
   border-radius: 10px;
 }
 
-.erro {
-  white-space: nowrap;
-  color: #b00020;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-input[aria-invalid='true'],
-select[aria-invalid='true'] {
-  border-color: #b00020;
-  border-width: 2px;
+.campo {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
 }
 
 .linha {
@@ -31,9 +24,7 @@ select[aria-invalid='true'] {
 }
 
 label {
-  display: grid;
-  gap: 6px;
-
+  display: block;
   color: #555;
   font-weight: 600;
 }
@@ -41,6 +32,7 @@ label {
 input,
 select,
 textarea {
+  width: 100%;
   padding: 10px 12px;
 
   color: var(--navy);
@@ -59,12 +51,27 @@ textarea:focus {
   outline-offset: 1px;
 }
 
-.ng-invalid.ng-touched {
-  border-color: #d93a6f;
+input[aria-invalid='true'],
+select[aria-invalid='true'] {
+  border-color: #b00020;
+  border-width: 2px;
 }
 
 textarea {
   resize: vertical;
+}
+
+.erro {
+  margin: 0;
+  color: #b00020;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.legenda {
+  margin: 0;
+  color: #555;
+  font-size: 0.9rem;
 }
 
 button {

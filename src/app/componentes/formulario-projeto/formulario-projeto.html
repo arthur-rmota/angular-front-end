@@ -1,0 +1,28 @@
+<form class="formulario" [formGroup]="form" (ngSubmit)="enviar()">
+  <div class="campo">
+    <label for="nome">Nome <span aria-hidden="true">*</span></label>
+    <input id="nome" formControlName="nome"
+      [attr.aria-invalid]="erro('nome') ? 'true' : null"
+      [attr.aria-describedby]="erro('nome') ? 'erro-nome' : null" />
+    @if (erro('nome')) { <p class="erro" id="erro-nome" role="alert">⚠ {{ erro('nome') }}</p> }
+  </div>
+
+  <div class="campo">
+    <label for="descricao">Descrição</label>
+    <textarea id="descricao" formControlName="descricao" rows="3"></textarea>
+  </div>
+
+  <div class="campo">
+    <label for="disciplina">Disciplina <span aria-hidden="true">*</span></label>
+    <input id="disciplina" formControlName="disciplina"
+      [attr.aria-invalid]="erro('disciplina') ? 'true' : null"
+      [attr.aria-describedby]="erro('disciplina') ? 'erro-disciplina' : null" />
+    @if (erro('disciplina')) { <p class="erro" id="erro-disciplina" role="alert">⚠ {{ erro('disciplina') }}</p> }
+  </div>
+
+  <p class="legenda"><span aria-hidden="true">*</span> campo obrigatório</p>
+
+  <button type="submit" [disabled]="salvando()">
+    {{ salvando() ? 'Salvando...' : textoBotao() }}
+  </button>
+</form>
