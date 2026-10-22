@@ -36,6 +36,19 @@ export class FormularioTarefa {
   protected status = Object.entries(rotuloStatus);
   protected prioridades = Object.entries(rotuloPrioridade);
 
+  private mensagens: Record<string, string> = {
+    titulo: 'Informe o título da tarefa.',
+    projetoId: 'Escolha um projeto.',
+    responsavel: 'Informe o responsável.',
+    prazo: 'Informe o prazo.',
+  };
+
+  protected erro(campo: string): string | null {
+    const c = this.form.get(campo);
+    return c && c.invalid && c.touched ? this.mensagens[campo] : null;
+  }
+  
+
   constructor() {
     // Na edição a tarefa chega depois (vem da API), então preenche quando mudar
     effect(() => this.form.patchValue(this.valorInicial()));

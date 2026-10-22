@@ -1,8 +1,7 @@
 .formulario {
   display: grid;
   gap: 16px;
-  max-width: 640px;
-
+  max-width: 100%;
   padding: 24px;
 
   background: #fff;
@@ -10,10 +9,25 @@
   border-radius: 10px;
 }
 
+.erro {
+  white-space: nowrap;
+  color: #b00020;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input[aria-invalid='true'],
+select[aria-invalid='true'] {
+  border-color: #b00020;
+  border-width: 2px;
+}
+
 .linha {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+  align-items: start;
+  min-width: 0;
 }
 
 label {

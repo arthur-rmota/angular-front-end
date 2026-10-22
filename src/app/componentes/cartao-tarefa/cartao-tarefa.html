@@ -1,5 +1,5 @@
 <article class="cartao">
-  <span class="barra-lateral" aria-hidden="true"></span>
+  <span class="barra-lateral" aria-hidden="true"></span>  
 
   <div class="cartao-conteudo">
     <h3>
@@ -7,7 +7,7 @@
         {{ tarefa().titulo }}
       </a>
     </h3>
-
+    
     <div class="etiquetas">
       <span class="status status-{{ tarefa().status }}">
         {{ rotuloStatus[tarefa().status] }}
@@ -28,6 +28,8 @@
         <span class="icone-info" aria-hidden="true">🗓️</span>
         {{ formatarData(tarefa().prazo) }}
       </span>
-    </p>
+      
+        <p><a [routerLink]="['/tarefas', tarefa().id, 'editar']">Editar tarefa</a></p>
+    
   </div>
 </article>

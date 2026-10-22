@@ -11,14 +11,16 @@ import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
   imports: [RouterLink, FormularioTarefa, NaoEncontrada],
   template: `
     @if (tarefa.hasValue()) {
-      <a [routerLink]="['/tarefas', id()]">← Voltar para a tarefa</a>
-      <div class="heading"><span class="spark"></span><h1>Editar tarefa</h1></div>
-      <app-formulario-tarefa
-        [valorInicial]="tarefa.value()"
-        textoBotao="Salvar alterações"
-        [salvando]="salvando()"
-        (salvar)="atualizar($event)"
-      />
+      <div class="pagina-formulario">
+        <a [routerLink]="['/tarefas', id()]">← Voltar para a tarefa</a>
+        <div class="heading"><span class="spark"></span><h1>Editar tarefa</h1></div>
+        <app-formulario-tarefa
+          [valorInicial]="tarefa.value()"
+          textoBotao="Salvar alterações"
+          [salvando]="salvando()"
+          (salvar)="atualizar($event)"
+        />
+      </div>
     } @else if (tarefa.error()) {
       <app-nao-encontrada />
     }

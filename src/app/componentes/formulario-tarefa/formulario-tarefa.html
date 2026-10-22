@@ -1,7 +1,16 @@
 <form class="formulario" [formGroup]="form" (ngSubmit)="enviar()">
-  <label>
+  <label for="titulo">
     Título
-    <input formControlName="titulo" />
+    <input 
+      id="titulo"
+      formControlName="titulo" 
+      [attr.aria-invalid]="erro('titulo') ? 'true' : null"
+      [attr.aria-describedby]="erro('titulo') ? 'erro-titulo' : null "
+      />
+    @if (erro('titulo')) {
+      <p class="erro" id="erro-titulo" role="alert">⚠ {{ erro('titulo') }}</p>
+    }
+
   </label>
 
   <label>
@@ -9,14 +18,23 @@
     <textarea formControlName="descricao" rows="3"></textarea>
   </label>
 
-  <label>
+  <label for="projetoId">
     Projeto
-    <select formControlName="projetoId">
+    <select 
+    formControlName="projetoId"
+    id="projetoId"
+    [attr.aria-invalid]="erro('projetoId') ? 'true' : null";
+    [attr.aria-describedby]="erro('projetoId') ? 'erro-projeto' : null"
+    >
       <option value="" disabled>Escolha um projeto</option>
       @for (projeto of projetos.value(); track projeto.id) {
         <option [value]="projeto.id">{{ projeto.nome }}</option>
       }
     </select>
+    @if (erro('projetoId')) {
+      <p class="erro" id="erro-projeto" role="alert">⚠ {{ erro('projetoId') }}</p>
+
+    }
   </label>
 
   <div class="linha">
@@ -40,18 +58,40 @@
   </div>
 
   <div class="linha">
-    <label>
+    <label for="responsavel">
       Responsável
-      <input formControlName="responsavel" />
+      <input 
+      formControlName="responsavel"
+      id="responsavel"
+      [attr.aria-invalid]="erro('responsavel') ? 'true': null";
+      [attr.aria-describedy]="erro('responsavel') ? 'erro-responsavel' : null";
+       />
+
+       @if (erro('responsavel')) {
+        <p class="erro" id="erro-responsavel" role="alert">⚠ {{ erro('responsavel') }}</p>
+
+       }
     </label>
 
     <label>
       Prazo
-      <input type="date" formControlName="prazo" />
+      <input 
+      type="date" 
+      formControlName="prazo" 
+      id="prazo"
+      [attr.aria-invalid]="erro('prazo') ? 'true' : null";
+      [attr.aria-describedy]="erro('prazo') ? 'erro-prazo' : null"; />
+
+      @if (erro('prazo')) {
+        <p class="erro" id="erro-prazo" role="alert">⚠ {{ erro('prazo') }}</p>
+
+      }
     </label>
   </div>
 
   <button type="submit" [disabled]="salvando()">
     {{ salvando() ? 'Salvando...' : textoBotao() }}
   </button>
+
+  <p class="legenda"><span aria-hidden="true">*</span> campo obrigatório</p>
 </form>
