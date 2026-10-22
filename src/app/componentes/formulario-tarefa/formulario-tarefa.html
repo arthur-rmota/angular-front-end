@@ -93,5 +93,7 @@
     {{ salvando() ? 'Salvando...' : textoBotao() }}
   </button>
 
-  <p class="legenda"><span aria-hidden="true">*</span> campo obrigatório</p>
+  @if (erroForm == true) {
+    <p class="legenda"><span aria-hidden="true">*</span> campo obrigatório</p>
+  }
 </form>

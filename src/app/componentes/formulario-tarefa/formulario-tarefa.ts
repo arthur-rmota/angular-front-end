@@ -43,6 +43,8 @@ export class FormularioTarefa {
     prazo: 'Informe o prazo.',
   };
 
+  erroForm: boolean = false;
+
   protected erro(campo: string): string | null {
     const c = this.form.get(campo);
     return c && c.invalid && c.touched ? this.mensagens[campo] : null;
@@ -57,6 +59,7 @@ export class FormularioTarefa {
   enviar() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
+      this.erroForm = true;
       return;
     }
     this.salvar.emit(this.form.getRawValue());
