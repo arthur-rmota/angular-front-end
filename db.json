@@ -20,13 +20,6 @@
       "disciplina": "Desenvolvimento-Front-end",
       "criadoEm": "2026-10-22",
       "id": "rZ0GtiL90Gc"
-    },
-    {
-      "nome": "Desenvolvimento App",
-      "descricao": "transformar o site em app",
-      "disciplina": "Desenvolvimento Mobile",
-      "criadoEm": "2026-10-22",
-      "id": "Y9gw08Zic-w"
     }
   ],
   "tarefas": [
@@ -111,7 +104,7 @@
       "id": "2JAmyWK86m8"
     },
     {
-      "titulo": "Implementar relacionamentos",
+      "titulo": "Implementar relacionamentos entre as tabelas",
       "descricao": "Definir as chaves primárias e estrangeiras para relacionar livros, leitores e empréstimos no banco de dados",
       "projetoId": "2",
       "status": "a-fazer",
@@ -120,6 +113,6 @@
       "prazo": "2026-12-31",
       "id": "VIXmCVrR15s"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
+  
 }
