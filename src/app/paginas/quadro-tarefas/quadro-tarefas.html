@@ -1,0 +1,30 @@
+
+<div class="heading">
+  <span class="spark"></span>
+  <h1>Quadro de tarefas</h1>
+</div>
+
+<div class="acoes">
+  <a routerLink="/" class="botao">← Voltar Para Tarefas</a>
+  <a routerLink="/tarefas/nova" class="botao">+ Nova tarefa</a>
+</div>
+
+<div class="quadro">
+  @for (coluna of colunas; track coluna.status) {
+    <section class="coluna">
+      <h2>{{ coluna.titulo }}</h2>
+
+      <span class="contador">
+        {{ tarefasPorStatus(coluna.status).length }} tarefas
+      </span>
+
+      <div class="cartoes">
+        @for (tarefa of tarefasPorStatus(coluna.status); track tarefa.id) {
+          <app-cartao-tarefa [tarefa]="tarefa" />
+        } @empty {
+          <p class="vazio">Nenhuma tarefa nesta coluna.</p>
+        }
+      </div>
+    </section>
+  }
+</div>

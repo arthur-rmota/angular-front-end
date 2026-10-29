@@ -37,13 +37,34 @@ nav a.ativo {
   color: #fff;
 }
 
+
 .conteudo {
+  width: 100%;
   max-width: 1000px;
   margin: 0 auto;
   padding: 24px 16px;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
 }
+
+
+.conteudo {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+.conteudo:has(app-quadro-tarefas) {
+  max-width: 1600px;
+  padding-inline: clamp(16px, 3vw, 48px);
+}
+
+
 
 .marca img {
   height: 60px;
@@ -166,6 +187,11 @@ pointer-events: none;
   .marca img {
     height: 48px;
   }
+
+  .coracao-topo{
+    margin-top: 100px;
+  }
+  
 
   nav {
     gap: 4px;

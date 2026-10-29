@@ -13,6 +13,7 @@ import { EstadoTarefas } from '../../servicos/estado-tarefas';
 <div class="heading"><span class="spark"></span><h1>Tarefas</h1></div>
     <div class="acoes">
       <a routerLink="/tarefas/nova" class="botao">+ Nova tarefa</a>
+      <a routerLink="/quadro" class="botao">Visualizar Quadro KanBan</a>
     </div>
     
   

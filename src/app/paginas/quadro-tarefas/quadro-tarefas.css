@@ -1,0 +1,190 @@
+:host {
+  display: block;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  color: #302541;
+}
+
+/* ===== ÁREA DO QUADRO ===== */
+
+.quadro {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 2px 0 18px;
+
+  box-sizing: border-box;
+}
+
+/* ===== COLUNAS ===== */
+
+.coluna {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding: 16px;
+
+  box-sizing: border-box;
+  border: 1px solid #e9e1f2;
+  border-radius: 15px;
+  background: #f8f6fb;
+  box-shadow: 0 3px 12px #38205208;
+
+  transition: box-shadow 0.2s ease;
+}
+
+.coluna:hover {
+  box-shadow: 0 5px 16px #38205212;
+}
+
+/* ===== TÍTULOS DAS COLUNAS ===== */
+
+.coluna h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin: 0;
+  color: #49345f;
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+.coluna h2::before {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  flex: 0 0 9px;
+  border-radius: 50%;
+  background: #9a7ac5;
+}
+
+.coluna:nth-child(1) h2::before {
+  background: #a58acb;
+}
+
+.coluna:nth-child(2) h2::before {
+  background: #648ee3;
+}
+
+.coluna:nth-child(3) h2::before {
+  background: #e5a34f;
+}
+
+.coluna:nth-child(4) h2::before {
+  background: #58ae86;
+}
+
+/* ===== CONTADOR DE TAREFAS ===== */
+
+.contador {
+  display: inline-block;
+  margin: 9px 0 14px;
+  padding: 4px 9px;
+
+  border: 1px solid #e7dcef;
+  border-radius: 20px;
+  background: #fff;
+  color: #79678d;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ===== CARTÕES ===== */
+
+.cartoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 90px;
+  box-sizing: border-box;
+}
+
+/* ===== COLUNAS VAZIAS ===== */
+
+.vazio {
+  margin: 0;
+  padding: 22px 10px;
+
+  border: 1px dashed #d9cce7;
+  border-radius: 12px;
+
+  color: #8c7b9c;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ===== TELAS MÉDIAS ===== */
+
+@media (max-width: 1100px) {
+  .quadro {
+    gap: 12px;
+  }
+
+  .coluna {
+    padding: 12px;
+  }
+
+  .coluna h2 {
+    font-size: 13px;
+  }
+}
+
+/* ===== TABLETS ===== */
+
+@media (max-width: 900px) {
+  .quadro {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .coluna {
+    padding: 15px;
+  }
+
+  .coluna h2 {
+    font-size: 15px;
+  }
+}
+
+/* ===== CELULARES ===== */
+
+@media (max-width: 520px) {
+  .heading h1 {
+    font-size: 23px;
+  }
+
+  .acoes {
+    justify-content: flex-start;
+    margin: 14px 0 18px;
+  }
+
+  .botao{
+    margin-top: 20px;
+  }
+
+
+  .quadro {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .coluna {
+    padding: 14px;
+  }
+}
