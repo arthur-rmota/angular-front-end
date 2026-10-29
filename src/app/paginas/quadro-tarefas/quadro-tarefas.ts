@@ -19,6 +19,16 @@ export class QuadroTarefas {
   private api = inject(Api);
   estado = inject(EstadoTarefas);
 
+  colunaTarefa(status: Status): boolean {
+    return this.tarefasPorStatus(status).length > 0; //retorna true caso tenha alguma tarefa
+  }
+
+  get quantidadeColunas(): number {
+    return this.colunas.filter(
+      coluna => this.colunaTarefa(coluna.status)
+    ).length
+  }
+
   tarefas = rxResource({
     stream: () => this.api.listarTarefas(),
   });

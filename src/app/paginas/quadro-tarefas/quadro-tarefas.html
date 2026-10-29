@@ -11,27 +11,27 @@
 
 <app-filtros-tarefas />
 
-<div class="quadro">
+<div class="quadro"
+  [style.grid-template-columns]="'repeat(' + quantidadeColunas +', minmax(0, 1fr))'"
+>
   @for (coluna of colunas; track coluna.status) {
-    <section class="coluna">
+    @if (colunaTarefa(coluna.status)){
+      <section class="coluna">
       <h2>{{ coluna.titulo }}</h2>
 
       @if (tarefasPorStatus(coluna.status).length == 1) {
         <span class="contador"> {{ tarefasPorStatus(coluna.status).length }} tarefa </span>
       } @else if (tarefasPorStatus(coluna.status).length > 1) {
         <span class="contador"> {{ tarefasPorStatus(coluna.status).length }} tarefas </span>
-      } @else {
-        <span class="contador"> Não Há tarefas </span>
       }
       
 
       <div class="cartoes">
         @for (tarefa of tarefasPorStatus(coluna.status); track tarefa.id) {
           <app-cartao-tarefa [tarefa]="tarefa" />
-        } @empty {
-          <p class="vazio">Nenhuma tarefa nesta coluna.</p>
         }
       </div>
     </section>
+    }
   }
 </div>
