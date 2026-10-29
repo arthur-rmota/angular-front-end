@@ -14,9 +14,14 @@
     <section class="coluna">
       <h2>{{ coluna.titulo }}</h2>
 
-      <span class="contador">
-        {{ tarefasPorStatus(coluna.status).length }} tarefas
-      </span>
+      @if (tarefasPorStatus(coluna.status).length == 1) {
+        <span class="contador"> {{ tarefasPorStatus(coluna.status).length }} tarefa </span>
+      } @else if (tarefasPorStatus(coluna.status).length > 1) {
+        <span class="contador"> {{ tarefasPorStatus(coluna.status).length }} tarefas </span>
+      } @else {
+        <span class="contador"> Não Há tarefas </span>
+      }
+      
 
       <div class="cartoes">
         @for (tarefa of tarefasPorStatus(coluna.status); track tarefa.id) {
