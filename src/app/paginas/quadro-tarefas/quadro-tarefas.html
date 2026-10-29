@@ -5,9 +5,11 @@
 </div>
 
 <div class="acoes">
-  <a routerLink="/" class="botao">← Voltar Para Tarefas</a>
+  <app-alternar-visao />
   <a routerLink="/tarefas/nova" class="botao">+ Nova tarefa</a>
 </div>
+
+<app-filtros-tarefas />
 
 <div class="quadro">
   @for (coluna of colunas; track coluna.status) {

@@ -1,4 +1,6 @@
 
+:host { display: block; }
+
 /* Área dos filtros */
 .filtros {
   display: flex;

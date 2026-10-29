@@ -3,13 +3,15 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { Api } from '../../api';
 import { CartaoTarefa } from '../../componentes/cartao-tarefa/cartao-tarefa';
+import { FiltrosTarefas } from '../../componentes/filtros-tarefas/filtros-tarefas';
+import { AlternarVisao } from '../../componentes/alternar-visao/alternar-visao';
 import { EstadoTarefas } from '../../servicos/estado-tarefas';
 import type {Status, Tarefa} from '../../../tipos';
 
 
 @Component({
   selector: 'app-quadro-tarefas',
-  imports: [RouterLink, CartaoTarefa],
+  imports: [RouterLink, CartaoTarefa, FiltrosTarefas, AlternarVisao],
   styleUrl: './quadro-tarefas.css',
   templateUrl: './quadro-tarefas.html',
 })

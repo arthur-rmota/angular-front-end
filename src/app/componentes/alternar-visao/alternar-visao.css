@@ -1,0 +1,30 @@
+.visoes {
+  display: inline-flex;
+  padding: 4px;
+  gap: 4px;
+  background: #ffffff;
+  border: 1px solid #dedcf5;
+  border-radius: 12px;
+}
+
+.visoes a {
+  padding: 8px 18px;
+  border-radius: 9px;
+  color: #4b168f;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.visoes a:hover {
+  background: #f1ecfb;
+}
+
+.visoes a.ativa {
+  background: #4b168f;
+  color: #fff;
+}
+
+.visoes a:focus-visible {
+  outline: 3px solid #ff70b8;
+  outline-offset: 2px;
+}
