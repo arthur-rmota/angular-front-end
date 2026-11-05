@@ -9,7 +9,7 @@
       [attr.aria-describedby]="erro('titulo') ? 'erro-titulo' : null"
     />
     @if (erro('titulo')) {
-      <p class="erro" id="erro-titulo" role="alert">⚠ {{ erro('titulo') }}</p>
+      <p class="erro-form" id="erro-titulo" role="alert">⚠ {{ erro('titulo') }}</p>
     }
   </div>
 
@@ -33,7 +33,7 @@
       }
     </select>
     @if (erro('projetoId')) {
-      <p class="erro" id="erro-projeto" role="alert">⚠ {{ erro('projetoId') }}</p>
+      <p class="erro-form" id="erro-projeto" role="alert">⚠ {{ erro('projetoId') }}</p>
     }
   </div>
 
@@ -68,7 +68,7 @@
         [attr.aria-describedby]="erro('responsavel') ? 'erro-responsavel' : null"
       />
       @if (erro('responsavel')) {
-        <p class="erro" id="erro-responsavel" role="alert">⚠ {{ erro('responsavel') }}</p>
+        <p class="erro-form" id="erro-responsavel" role="alert">⚠ {{ erro('responsavel') }}</p>
       }
     </div>
 
@@ -83,7 +83,7 @@
         [attr.aria-describedby]="erro('prazo') ? 'erro-prazo' : null"
       />
       @if (erro('prazo')) {
-        <p class="erro" id="erro-prazo" role="alert">⚠ {{ erro('prazo') }}</p>
+        <p class="erro-form" id="erro-prazo" role="alert">⚠ {{ erro('prazo') }}</p>
       }
     </div>
   </div>

@@ -9,7 +9,7 @@
       [attr.aria-describedby]="erro('nome') ? 'erro-nome' : null"
     />
     @if (erro('nome')) {
-      <p class="erro" id="erro-nome" role="alert">⚠ {{ erro('nome') }}</p>
+      <p class="erro-form" id="erro-nome" role="alert">⚠ {{ erro('nome') }}</p>
     }
   </div>
 
@@ -27,7 +27,7 @@
       [attr.aria-describedby]="erro('disciplina') ? 'erro-disciplina' : null"
     />
     @if (erro('disciplina')) {
-      <p class="erro" id="erro-disciplina" role="alert">⚠ {{ erro('disciplina') }}</p>
+      <p class="erro-form" id="erro-disciplina" role="alert">⚠ {{ erro('disciplina') }}</p>
     }
   </div>
 
