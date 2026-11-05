@@ -30,14 +30,19 @@ import { EstadoTarefas } from '../../servicos/estado-tarefas';
       </p>
     }
     @if (tarefas.hasValue()) {
-      <div class="grade">
+      @if (estado.tarefasFiltradas().length > 0) {
+        <div class="grade">
         @for (tarefa of estado.tarefasFiltradas(); track tarefa.id) {
           <app-cartao-tarefa [tarefa]="tarefa" (excluida)="tarefas.reload()" />
-        }@empty {
-          <p>Nenhuma tarefa encontrada!</p>
         }
-
       </div>
+    }@else {
+          @if (estado.busca().trim() || estado.status() || estado.prioridade()){
+            <p class="vazio"> Nenhuma Tarefa encontrada</p>
+        } @else {
+          <p class="vazio"> Nenhuma Tarefa cadastrada </p>
+        }
+      }
     }
   `,
 })

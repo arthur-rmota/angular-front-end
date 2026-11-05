@@ -30,14 +30,20 @@ import { formatarData } from '../../rotulos';
       </div>
 
       <h2>Tarefas do projeto</h2>
-      <div class="acoes">
+      @if (p.tarefas.length > 0){
+        <div class="acoes">
         <a class="botao" routerLink="/tarefas/nova" [queryParams]="{ projetoId: p.id }">+ Nova tarefa neste projeto</a>
       </div>
-      <div class="grade">
+        <div class="grade">
         @for (tarefa of p.tarefas; track tarefa.id) {
           <app-cartao-tarefa [tarefa]="tarefa" (excluida)="projeto.reload()" />
         }
       </div>
+      } @else {
+        <a class="botao" routerLink="/tarefas/nova" [queryParams]="{ projetoId: p.id }">+ Criar tarefa neste projeto</a>
+        <p class="vazio"> Nenhuma Tarefa Cadastrada </p>
+      }
+      
     }
   `,
 })

@@ -38,6 +38,16 @@ body {
     );
 }
 
+.vazio {
+  padding: 24px;
+  text-align: center;
+  color: var(--purple);
+  font-weight: 600;
+  background: #f8f5ff;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
 a {
   color: #5b21b6;
 }

@@ -27,6 +27,8 @@ import { Api } from '../../api';
             <a [routerLink]="['/projetos', projeto.id]"class="botao-secundario">{{ projeto.nome }}</a>
             <span>{{ projeto.disciplina }}</span>
           </li>
+        } @empty {
+          <p class="vazio"> Nenhum projeto cadastrado</p>
         }
       </ul>
     }
