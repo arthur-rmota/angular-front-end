@@ -21,9 +21,13 @@ import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
         [salvando]="salvando()"
         (salvar)="atualizar($event)"
       />
-    } @else if (projeto.error()) {
+    } @else if (naoExiste()) {
       <app-nao-encontrada />
+    } @else {
+      @if (projeto.isLoading()) {
+      <p class="carregando">Carregando...</p>
     }
+}
   `,
 })
 export class EditarProjeto {
@@ -38,6 +42,10 @@ export class EditarProjeto {
   });
 
   salvando = signal(false);
+
+  naoExiste() {
+    return (this.projeto.error() as { status?: number } | undefined)?.status === 404;
+  }
   erroApi = signal('');
 
   atualizar(dados: NovoProjeto) {

@@ -20,6 +20,9 @@ import { EstadoTarefas } from '../../servicos/estado-tarefas';
   
 <app-filtros-tarefas />
 
+    @if (tarefas.isLoading()) {
+      <p class="carregando">Carregando...</p>
+    }
 @if (tarefas.hasValue()) {
       <div class="grade">
         @for (tarefa of estado.tarefasFiltradas(); track tarefa.id) {

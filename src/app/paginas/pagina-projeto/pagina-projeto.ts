@@ -9,6 +9,9 @@ import { formatarData } from '../../rotulos';
   selector: 'app-pagina-projeto',
   imports: [RouterLink, CartaoTarefa],
   template: `
+    @if (projeto.isLoading()) {
+      <p class="carregando">Carregando...</p>
+    }
 @if (projeto.hasValue()) {
       @let p = projeto.value();
       <h1>{{ p.nome }}</h1>

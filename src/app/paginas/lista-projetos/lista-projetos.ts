@@ -11,7 +11,10 @@ import { Api } from '../../api';
   <div class="acoes">
     <a routerLink="/projetos/novo" class="botao">+ Novo projeto</a>
   </div>
-    @if (projetos.hasValue()) {
+    @if (projetos.isLoading()) {
+      <p class="carregando">Carregando...</p>
+    }
+@if (projetos.hasValue()) {
       <ul class="lista-projetos">
         @for (projeto of projetos.value(); track projeto.id) {
           <li>

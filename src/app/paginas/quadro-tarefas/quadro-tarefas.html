@@ -11,6 +11,9 @@
 
 <app-filtros-tarefas />
 
+@if (tarefas.isLoading()) {
+  <p class="carregando">Carregando...</p>
+}
 <div class="quadro"
   [style.grid-template-columns]="'repeat(' + quantidadeColunas +', minmax(0, 1fr))'"
 >

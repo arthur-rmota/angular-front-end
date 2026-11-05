@@ -25,9 +25,13 @@ import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
         <p><a [routerLink]="['/tarefas', t.id, 'editar']" class="botao">Editar tarefa</a></p>
       </dl>
       
-    } @else {
+    } @else if (naoExiste()) {
       <app-nao-encontrada />
-    } 
+    } @else {
+      @if (tarefa.isLoading()) {
+      <p class="carregando">Carregando...</p>
+    }
+}
   `,
 })
 export class DetalheTarefa {
@@ -40,6 +44,10 @@ export class DetalheTarefa {
     params: () => this.id(),
     stream: ({ params: id }) => this.api.buscarTarefa(id),
   });
+
+  naoExiste() {
+    return (this.tarefa.error() as { status?: number } | undefined)?.status === 404;
+  }
 
   protected rotuloStatus = rotuloStatus;
   protected rotuloPrioridade = rotuloPrioridade;

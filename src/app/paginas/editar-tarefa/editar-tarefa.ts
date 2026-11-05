@@ -23,9 +23,13 @@ import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
           (salvar)="atualizar($event)"
         />
       </div>
-    } @else if (tarefa.error()) {
+    } @else if (naoExiste()) {
       <app-nao-encontrada />
+    } @else {
+      @if (tarefa.isLoading()) {
+      <p class="carregando">Carregando...</p>
     }
+}
   `,
 })
 export class EditarTarefa {
@@ -40,6 +44,10 @@ export class EditarTarefa {
   });
 
   salvando = signal(false);
+
+  naoExiste() {
+    return (this.tarefa.error() as { status?: number } | undefined)?.status === 404;
+  }
 
   atualizar(tarefa: NovaTarefa) {
     this.salvando.set(true);
