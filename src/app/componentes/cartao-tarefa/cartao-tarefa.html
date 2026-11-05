@@ -1,8 +1,7 @@
 <article class="cartao">
-  <span class="barra-lateral" aria-hidden="true"></span>  
+  <span class="barra-lateral" aria-hidden="true"></span>
 
-  <img
-    class="icone-docinho" src="docinho.webp" alt="" aria-hidden="true">
+  <img class="icone-docinho" src="docinho.webp" alt="" aria-hidden="true" />
 
   <div class="cartao-conteudo">
     <h3>
@@ -10,7 +9,7 @@
         {{ tarefa().titulo }}
       </a>
     </h3>
-    
+
     <div class="etiquetas">
       <span class="status status-{{ tarefa().status }}">
         {{ rotuloStatus[tarefa().status] }}
@@ -31,11 +30,17 @@
         <span class="icone-info" aria-hidden="true">🗓️</span>
         {{ formatarData(tarefa().prazo) }}
       </span>
-      
-        <div class="acoes">
-          <a [routerLink]="['/tarefas', tarefa().id, 'editar']" class="botao-tarefa">Editar tarefa</a>
-          <button type="button" class="botao-excluir" (click)="excluir()">Excluir</button>
-        </div>
-    
+    </p>
+
+    <div class="acoes">
+      <a [routerLink]="['/tarefas', tarefa().id, 'editar']" class="botao-tarefa">Editar tarefa</a>
+      <button type="button" class="botao-excluir" (click)="excluir()" [disabled]="excluindo()">
+        {{ excluindo() ? 'Excluindo...' : 'Excluir' }}
+      </button>
+
+      @if (erroExclusao()) {
+        <p class="erro-exclusao" role="alert">⚠ {{ erroExclusao() }}</p>
+      }
+    </div>
   </div>
 </article>

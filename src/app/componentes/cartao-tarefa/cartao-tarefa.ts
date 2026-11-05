@@ -1,8 +1,10 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, inject, input, output, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Api } from '../../api';
 import type { Tarefa } from '../../../tipos';
 import { formatarData, rotuloPrioridade, rotuloStatus } from '../../rotulos';
+import { finalize } from 'rxjs';
+import { sign } from 'crypto';
 
 @Component({
   selector: 'app-cartao-tarefa',
@@ -13,6 +15,9 @@ import { formatarData, rotuloPrioridade, rotuloStatus } from '../../rotulos';
 export class CartaoTarefa {
   private api = inject(Api);
 
+  erroExclusao = signal('');
+  excluindo = signal(false);
+
   tarefa = input.required<Tarefa>();
   excluida = output<void>();
 
@@ -21,11 +26,24 @@ export class CartaoTarefa {
   protected formatarData = formatarData;
 
   excluir() {
-    if (!confirm(`Excluir a tarefa "${this.tarefa().titulo}"?`)) return;
+    this.erroExclusao.set('');
 
-    this.api.excluirTarefa(this.tarefa().id).subscribe({
-      next: () => this.excluida.emit(),
-      error: () => alert('Não foi possível excluir a tarefa. Tente de novo.'),
-    });
+    if (!confirm(`Excluir a Tarefa "${this.tarefa().titulo}"?`)) {
+      return;
+    }
+
+    this.excluindo.set(true);
+
+    this.api
+      .excluirTarefa(this.tarefa().id)
+      .pipe(finalize(() => this.excluindo.set(false)))
+      .subscribe({
+        next: () => {
+          this.excluida.emit();
+        },
+        error: () => {
+          this.erroExclusao.set('Falha ao excluir, Tente novamente');
+        },
+      });
   }
 }

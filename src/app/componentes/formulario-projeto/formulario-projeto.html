@@ -23,6 +23,12 @@
   <p class="legenda"><span aria-hidden="true">*</span> campo obrigatório</p>
 
   <button type="submit" [disabled]="salvando()">
-    {{ salvando() ? 'Salvando...' : textoBotao() }}
+    @if (salvando()) {
+      <div>
+        Salvando... <div class="spinner-botao"></div>
+      </div>
+    } @else {
+      {{ textoBotao() }}
+    }
   </button>
 </form>
