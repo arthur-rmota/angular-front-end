@@ -3,7 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { Api } from '../../api';
 import { FormularioTarefa } from '../../componentes/formulario-tarefa/formulario-tarefa';
 import type { NovaTarefa as DadosTarefa } from '../../../tipos';
-import { sign } from 'crypto';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-nova-tarefa',
@@ -40,12 +40,10 @@ export class NovaTarefa {
     criar(tarefa: DadosTarefa) {
     this.salvando.set(true);
     this.erroApi.set('')
-    this.api.criarTarefa(tarefa).subscribe({
-    next: () => this.router.navigate(['/']),
-    error: () => {
-      this.salvando.set(false);
-      this.erroApi.set('Não foi possível salvar. Verifique a API e tente novamente.');
-    },
-  });
+    this.api.criarTarefa(tarefa).pipe(finalize(() => this.salvando.set(false)))
+    .subscribe({
+      next: () => this.router.navigate(['/']),
+      error: () => {this.erroApi.set('Não foi possível salvar, tente novamente')}
+    })
   }
 }
