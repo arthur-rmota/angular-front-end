@@ -15,37 +15,36 @@
     <div class="spinner"></div>
     <p class="carregando">Carregando...</p>
   </div>
-}
-@if (tarefas.error()) {
+} @else if (tarefas.error()) {
   <p class="erro" role="alert">
     ⚠ Não foi possível carregar os dados.
     <button type="button" class="botao-secundario" (click)="tarefas.reload()">
       Tentar de novo
     </button>
   </p>
-}
+} @else {
+  <div
+    class="quadro"
+    [style.grid-template-columns]="'repeat(' + quantidadeColunas + ', minmax(0, 1fr))'"
+  >
+    @for (coluna of colunas; track coluna.status) {
+      @if (colunaTarefa(coluna.status)) {
+        <section class="coluna">
+          <h2>{{ coluna.titulo }}</h2>
 
-<div
-  class="quadro"
-  [style.grid-template-columns]="'repeat(' + quantidadeColunas + ', minmax(0, 1fr))'"
->
-  @for (coluna of colunas; track coluna.status) {
-    @if (colunaTarefa(coluna.status)) {
-      <section class="coluna">
-        <h2>{{ coluna.titulo }}</h2>
-
-        @if (tarefasPorStatus(coluna.status).length == 1) {
-          <span class="contador"> {{ tarefasPorStatus(coluna.status).length }} tarefa </span>
-        } @else if (tarefasPorStatus(coluna.status).length > 1) {
-          <span class="contador"> {{ tarefasPorStatus(coluna.status).length }} tarefas </span>
-        }
-
-        <div class="cartoes">
-          @for (tarefa of tarefasPorStatus(coluna.status); track tarefa.id) {
-            <app-cartao-tarefa [tarefa]="tarefa" (excluida)="tarefas.reload()" />
+          @if (tarefasPorStatus(coluna.status).length == 1) {
+            <span class="contador"> {{ tarefasPorStatus(coluna.status).length }} tarefa </span>
+          } @else if (tarefasPorStatus(coluna.status).length > 1) {
+            <span class="contador"> {{ tarefasPorStatus(coluna.status).length }} tarefas </span>
           }
-        </div>
-      </section>
+
+          <div class="cartoes">
+            @for (tarefa of tarefasPorStatus(coluna.status); track tarefa.id) {
+              <app-cartao-tarefa [tarefa]="tarefa" (excluida)="tarefas.reload()" />
+            }
+          </div>
+        </section>
+      }
     }
-  }
-</div>
+  </div>
+}
