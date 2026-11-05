@@ -1,3 +1,4 @@
+
 :root {
   --navy: #11194e;
   --purple: #6548a5;
@@ -38,6 +39,8 @@ body {
     );
 }
 
+/* Estados vazios e mensagens */
+
 .vazio {
   padding: 24px;
   text-align: center;
@@ -48,23 +51,26 @@ body {
   margin: 20px 0;
 }
 
-.erro{
+.erro {
   padding: 24px;
   text-align: center;
   background: #f8f5ff;
-  border: 1px, solid, rgba(255, 32, 32, 0.284);
+  border: 1px solid rgba(255, 32, 32, 0.284);
   border-radius: 12px;
   margin-top: 20px;
 }
 
 .erro-exclusao {
   color: #c62850;
-  font-size: 11px;
-  line-height: 1.3;
+  font-size: 12px;
+  line-height: 1.4;
   margin: 10px 0 0;
   padding: 0;
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
+
+/* Carregamento */
 
 .loading {
   display: flex;
@@ -85,7 +91,7 @@ body {
   animation: girar 0.8s linear infinite;
 }
 
-.spinner-botao{
+.spinner-botao {
   display: inline-block;
   width: 14px;
   height: 14px;
@@ -101,11 +107,18 @@ body {
   font-weight: 600;
 }
 
+.carregando {
+  color: var(--purple);
+  font-weight: 600;
+}
+
 @keyframes girar {
   to {
     transform: rotate(360deg);
   }
 }
+
+/* Links e títulos */
 
 a {
   color: #5b21b6;
@@ -115,7 +128,6 @@ a {
   display: flex;
   align-items: center;
   gap: 18px;
-
   margin: 20px 0 45px 8px;
 }
 
@@ -124,13 +136,11 @@ a {
   font-size: 42px;
   font-weight: 300;
   line-height: 1;
-
   transform: rotate(4deg);
 }
 
 .heading h1 {
   position: relative;
-
   margin: 0;
   font-size: 38px;
   line-height: 1;
@@ -139,27 +149,26 @@ a {
 
 .heading h1::after {
   content: "";
-
   position: absolute;
   right: 0;
   bottom: -18px;
   left: 4px;
-
   height: 6px;
   border-radius: 9px;
   background: var(--pink);
-
   transform: rotate(-1deg);
 }
+
+/* Grade de tarefas */
 
 .grade {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-
   gap: 30px 20px;
 }
 
 /* Cores de destaque dos cartões */
+
 .grade app-cartao-tarefa:nth-child(3n + 1) {
   --accent: var(--pink);
 }
@@ -172,14 +181,13 @@ a {
   --accent: var(--green);
 }
 
+/* Campos de detalhes */
 
 .campos {
   display: grid;
   grid-template-columns: max-content 1fr;
   gap: 8px 20px;
-
   padding: 20px;
-
   background: #fff;
   border: 1px solid #e2e2ea;
   border-radius: 10px;
@@ -194,11 +202,11 @@ a {
   margin: 0;
 }
 
+/* Lista de projetos */
 
 .lista-projetos {
   display: grid;
   gap: 10px;
-
   padding: 0;
   list-style: none;
 }
@@ -207,9 +215,7 @@ a {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-
   padding: 14px 16px;
-
   background: #fff;
   border: 1px solid #e2e2ea;
   border-radius: 10px;
@@ -219,10 +225,11 @@ a {
   color: #666;
 }
 
-
 .detalhes {
   color: #666;
 }
+
+/* Formulários */
 
 .pagina-formulario {
   width: 100%;
@@ -230,59 +237,17 @@ a {
   margin-inline: auto;
 }
 
-/* ========================================
-   RESPONSIVIDADE
-======================================== */
-
-/* Tablets e telas médias */
-@media (max-width: 1050px) {
-  .grade {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-/* Celulares */
-@media (max-width: 680px) {
-  .grade {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .heading {
-    gap: 10px;
-    margin-left: 0;
-    margin-bottom: 38px;
-  }
-
-  .heading h1 {
-    font-size: 43px;
-  }
-
-  .heading .spark {
-    font-size: 43px;
-  }
-
-  .pagina-formulario {
-    max-width: 100%;
-  }
-}
-
-/* ========================================
-   BOTÕES (links com cara de botão)
-======================================== */
+/* Botões */
 
 .botao,
 .botao-secundario {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
   padding: 10px 22px;
-
   font: inherit;
   font-weight: 600;
   text-decoration: none;
-
   border: 2px solid var(--purple);
   border-radius: 8px;
   cursor: pointer;
@@ -309,97 +274,48 @@ a {
   background: var(--lavender);
 }
 
-.botao:focus-visible,
-.botao-secundario:focus-visible {
-  outline: 3px solid var(--pink);
-  outline-offset: 2px;
-}
-
-/* Linha que agrupa os botões de ação */
-.acoes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 0 0 24px;
-}
-
-/* Botões (links com cara de botão) */
-.botao,
-.botao-secundario {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 10px 22px;
-
-  font: inherit;
-  font-weight: 600;
-  text-decoration: none;
-
-  border: 2px solid var(--purple);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s, transform 0.15s;
-}
-
-.botao {
-  color: #fff;
-  background: var(--purple);
-}
-
-.botao-tarefa{
+.botao-tarefa {
   margin-top: 30px;
   color: #fff;
   background: #6C3BB8;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
   padding: 10px 22px;
-
   font: inherit;
   font-weight: 600;
   text-decoration: none;
-
   border: 2px solid var(--purple);
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.15s, color 0.15s, transform 0.15s;
 }
 
-.botao:hover, .botao-tarefa:hover {
+.botao-tarefa:hover {
   background: var(--navy);
   border-color: var(--navy);
   transform: translateY(-1px);
 }
 
-.botao-secundario {
-  color: var(--purple);
-  background: #fff;
-}
-
-.botao-secundario:hover {
-  background: var(--lavender);
-}
+/* Foco acessível pelo teclado */
 
 .botao:focus-visible,
-.botao-secundario:focus-visible {
+.botao-secundario:focus-visible,
+.botao-tarefa:focus-visible {
   outline: 3px solid var(--pink);
   outline-offset: 2px;
 }
 
-/* Linha que agrupa os botões de ação */
+/* Ações */
+
 .acoes {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin: 0 0 24px;
 }
-/* Carregando, erro de API e botão de excluir */
-.carregando {
-  color: var(--purple);
-  font-weight: 600;
-}
+
+/* Mensagens de erro e exclusão */
 
 .erro button {
   margin-left: 8px;
@@ -420,4 +336,41 @@ a {
 
 .botao-excluir:hover {
   background: #ffc9dd;
+}
+
+/* Responsividade */
+
+/* Tablets e telas médias */
+
+@media (max-width: 1050px) {
+  .grade {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Celulares */
+
+@media (max-width: 680px) {
+  .grade {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .heading {
+    gap: 10px;
+    margin-left: 0;
+    margin-bottom: 38px;
+  }
+
+  .heading h1 {
+    font-size: 43px;
+  }
+
+  .heading .spark {
+    font-size: 43px;
+  }
+
+  .pagina-formulario {
+    max-width: 100%;
+  }
 }

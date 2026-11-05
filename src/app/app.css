@@ -5,7 +5,7 @@
   flex-wrap: wrap;
   gap: 12px;
   padding: 14px 24px;
-  background: #4B168F;
+  background: #4b168f;
   color: #fff;
 }
 
@@ -37,7 +37,6 @@ nav a.ativo {
   color: #fff;
 }
 
-
 .conteudo {
   width: 100%;
   max-width: 1000px;
@@ -47,7 +46,6 @@ nav a.ativo {
   z-index: 1;
   box-sizing: border-box;
 }
-
 
 .conteudo {
   width: 100%;
@@ -63,8 +61,6 @@ nav a.ativo {
   max-width: 1600px;
   padding-inline: clamp(16px, 3vw, 48px);
 }
-
-
 
 .marca img {
   height: 60px;
@@ -89,6 +85,9 @@ nav a.ativo {
   border-radius: 260px 260px 0 0;
   opacity: 1;
   pointer-events: none;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .arco::before {
@@ -98,6 +97,9 @@ nav a.ativo {
   border: 40px solid #8fd3ff;
   border-bottom: 0;
   border-radius: 215px 215px 0 0;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .arco.esquerda {
@@ -112,7 +114,6 @@ nav a.ativo {
   border-color: #a6e88f;
   transform: rotate(-14deg);
 }
-
 
 .decoracao {
   position: fixed;
@@ -142,39 +143,39 @@ nav a.ativo {
 }
 
 .estrela-direita {
-position: fixed;
-top: 208px;
-right: 55px;
-width: 25px;
-height: 25px;
-object-fit: contain;
-transform: rotate(-12deg);
-z-index: 1;
-pointer-events: none;
+  position: fixed;
+  top: 208px;
+  right: 55px;
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  transform: rotate(-12deg);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .estrela-inferior-esquerda {
-position: fixed;
-bottom: 105px;
-left: 48px;
-width: 38px;
-height: 38px;
-object-fit: contain;
-transform: rotate(10deg);
-z-index: 1;
-pointer-events: none;
+  position: fixed;
+  bottom: 105px;
+  left: 48px;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  transform: rotate(10deg);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .estrela-inferior-direita {
-position: fixed;
-bottom: 145px;
-right: 4%;
-width: 30px;
-height: 30px;
-object-fit: contain;
-transform: rotate(-10deg);
-z-index: 1;
-pointer-events: none;
+  position: fixed;
+  bottom: 145px;
+  right: 4%;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  transform: rotate(-10deg);
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* Ajustes para telas pequenas */
@@ -188,10 +189,9 @@ pointer-events: none;
     height: 48px;
   }
 
-  .coracao-topo{
+  .coracao-topo {
     margin-top: 100px;
   }
-  
 
   nav {
     gap: 4px;
@@ -208,11 +208,18 @@ pointer-events: none;
 
   /* Arcos menores e com bordas mais finas */
   .arco {
-    width: 240px;
-    height: 160px;
-    border-width: 22px;
+    position: fixed;
+    z-index: 0;
+    width: 520px;
+    height: 320px;
+    border: 46px solid #ff9fd6;
     border-bottom: 0;
-    border-radius: 130px 130px 0 0;
+    border-radius: 260px 260px 0 0;
+    opacity: 1;
+    pointer-events: none;
+
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .arco::before {

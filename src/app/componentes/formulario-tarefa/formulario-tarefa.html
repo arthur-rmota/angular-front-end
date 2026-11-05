@@ -3,6 +3,7 @@
     <label for="titulo">Título <span aria-hidden="true">*</span></label>
     <input
       id="titulo"
+      required
       formControlName="titulo"
       [attr.aria-invalid]="erro('titulo') ? 'true' : null"
       [attr.aria-describedby]="erro('titulo') ? 'erro-titulo' : null"
@@ -21,6 +22,7 @@
     <label for="projetoId">Projeto <span aria-hidden="true">*</span></label>
     <select
       id="projetoId"
+      required
       formControlName="projetoId"
       [attr.aria-invalid]="erro('projetoId') ? 'true' : null"
       [attr.aria-describedby]="erro('projetoId') ? 'erro-projeto' : null"
@@ -61,6 +63,7 @@
       <input
         id="responsavel"
         formControlName="responsavel"
+        required
         [attr.aria-invalid]="erro('responsavel') ? 'true' : null"
         [attr.aria-describedby]="erro('responsavel') ? 'erro-responsavel' : null"
       />
@@ -75,6 +78,7 @@
         id="prazo"
         type="date"
         formControlName="prazo"
+        required
         [attr.aria-invalid]="erro('prazo') ? 'true' : null"
         [attr.aria-describedby]="erro('prazo') ? 'erro-prazo' : null"
       />
@@ -87,12 +91,13 @@
   <p class="legenda"><span aria-hidden="true">*</span> campo obrigatório</p>
 
   <button type="submit" [disabled]="salvando()">
-    @if (salvando()) {
-      <div>
-        Salvando... <div class="spinner-botao"></div>
-      </div>
-    } @else {
-      {{ textoBotao() }}
-    }
-  </button>
+  @if (salvando()) {
+    <span role="status">
+      <span class="spinner-botao" aria-hidden="true"></span>
+      Salvando...
+    </span>
+  } @else {
+    {{ textoBotao() }}
+  }
+</button>
 </form>
