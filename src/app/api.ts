@@ -42,6 +42,10 @@ export class Api {
     return this.http.patch<Tarefa>(`${this.url}/tarefas/${id}`, dados);
   }
 
+  excluirTarefa(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.url}/tarefas/${id}`);
+  }
+
   criarProjeto(projeto: NovoProjeto): Observable<Projeto> {
     return this.http.post<Projeto>(`${this.url}/projetos`, { ...projeto, criadoEm: hoje() });
   }

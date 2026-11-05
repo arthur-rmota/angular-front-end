@@ -326,3 +326,18 @@ a {
   gap: 12px;
   margin: 0 0 24px;
 }
+.botao-excluir {
+  margin-top: 30px;
+  margin-left: 8px;
+  padding: 10px 22px;
+  color: #a5104a;
+  background: #ffe0eb;
+  border: 1px solid #ff75b7;
+  border-radius: 999px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.botao-excluir:hover {
+  background: #ffc9dd;
+}

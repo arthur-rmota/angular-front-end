@@ -28,7 +28,7 @@
 
       <div class="cartoes">
         @for (tarefa of tarefasPorStatus(coluna.status); track tarefa.id) {
-          <app-cartao-tarefa [tarefa]="tarefa" />
+          <app-cartao-tarefa [tarefa]="tarefa" (excluida)="tarefas.reload()" />
         }
       </div>
     </section>

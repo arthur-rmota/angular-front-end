@@ -9,7 +9,7 @@ import { formatarData } from '../../rotulos';
   selector: 'app-pagina-projeto',
   imports: [RouterLink, CartaoTarefa],
   template: `
-    @if (projeto.hasValue()) {
+@if (projeto.hasValue()) {
       @let p = projeto.value();
       <h1>{{ p.nome }}</h1>
       <p>{{ p.descricao }}</p>
@@ -26,7 +26,7 @@ import { formatarData } from '../../rotulos';
       </div>
       <div class="grade">
         @for (tarefa of p.tarefas; track tarefa.id) {
-          <app-cartao-tarefa [tarefa]="tarefa" />
+          <app-cartao-tarefa [tarefa]="tarefa" (excluida)="projeto.reload()" />
         }
       </div>
     }

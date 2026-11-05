@@ -20,10 +20,10 @@ import { EstadoTarefas } from '../../servicos/estado-tarefas';
   
 <app-filtros-tarefas />
 
-    @if (tarefas.hasValue()) {
+@if (tarefas.hasValue()) {
       <div class="grade">
         @for (tarefa of estado.tarefasFiltradas(); track tarefa.id) {
-          <app-cartao-tarefa [tarefa]="tarefa" />
+          <app-cartao-tarefa [tarefa]="tarefa" (excluida)="tarefas.reload()" />
         }@empty {
           <p>Nenhuma tarefa encontrada!</p>
         }
