@@ -12,15 +12,16 @@ import { Api } from '../../api';
     <a routerLink="/projetos/novo" class="botao">+ Novo projeto</a>
   </div>
     @if (projetos.isLoading()) {
-      <p class="carregando">Carregando...</p>
-    }
-    @if (projetos.error()) {
+      <div class="loading">
+        <div class="spinner"> </div>
+        <p class="carregando">Carregando...</p>
+      </div>
+    } @else if (projetos.error()) {
       <p class="erro" role="alert">
         ⚠ Não foi possível carregar os dados.
         <button type="button" class="botao-secundario" (click)="projetos.reload()">Tentar de novo</button>
       </p>
-    }
-    @if (projetos.hasValue()) {
+    } @else if (projetos.hasValue()) {
       <ul class="lista-projetos">
         @for (projeto of projetos.value(); track projeto.id) {
           <li>

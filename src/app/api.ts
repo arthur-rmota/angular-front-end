@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, timeout } from 'rxjs';
+import { Observable, timeout, delay } from 'rxjs';
 import type { NovaTarefa, Projeto, Tarefa } from '../tipos';
 
 export type ProjetoComTarefas = Projeto & { tarefas: Tarefa[] };

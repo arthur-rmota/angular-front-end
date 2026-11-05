@@ -25,14 +25,12 @@ import { EstadoTarefas } from '../../servicos/estado-tarefas';
         <div class="spinner"> </div>
         <p class="carregando">Carregando...</p>
       </div>
-    }
-    @if (tarefas.error()) {
+    } @else if (tarefas.error()) {
       <p class="erro" role="alert">
         ⚠ Não foi possível carregar os dados.
         <button type="button" class="botao-secundario" (click)="tarefas.reload()">Tentar de novo</button>
       </p>
-    }
-    @if (tarefas.hasValue()) {
+    } @else if (tarefas.hasValue()) {
       @if (estado.tarefasFiltradas().length > 0) {
         <div class="grade">
         @for (tarefa of estado.tarefasFiltradas(); track tarefa.id) {
