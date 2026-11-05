@@ -1,4 +1,3 @@
-
 :root {
   --navy: #11194e;
   --purple: #6548a5;
@@ -10,6 +9,14 @@
 
 * {
   box-sizing: border-box;
+}
+
+/* Foco acessível pelo teclado */
+*:focus-visible {
+  outline: 3px solid #FF70B8 !important;
+  outline-offset: 1px !important;
+  border-radius: 5px;
+  box-shadow: 0 0 0 3px #fff;
 }
 
 body {
@@ -284,7 +291,7 @@ a {
 .botao-tarefa {
   margin-top: 30px;
   color: #fff;
-  background: #6C3BB8;
+  background: #6c3bb8;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -302,15 +309,6 @@ a {
   background: var(--navy);
   border-color: var(--navy);
   transform: translateY(-1px);
-}
-
-/* Foco acessível pelo teclado */
-
-.botao:focus-visible,
-.botao-secundario:focus-visible,
-.botao-tarefa:focus-visible {
-  outline: 3px solid var(--pink);
-  outline-offset: 2px;
 }
 
 /* Ações */
