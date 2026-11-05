@@ -14,6 +14,13 @@
 @if (tarefas.isLoading()) {
   <p class="carregando">Carregando...</p>
 }
+@if (tarefas.error()) {
+  <p class="erro" role="alert">
+    ⚠ Não foi possível carregar os dados. Verifique se o json-server está rodando.
+    <button type="button" class="botao-secundario" (click)="tarefas.reload()">Tentar de novo</button>
+  </p>
+}
+
 <div class="quadro"
   [style.grid-template-columns]="'repeat(' + quantidadeColunas +', minmax(0, 1fr))'"
 >

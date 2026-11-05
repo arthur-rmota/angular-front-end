@@ -23,7 +23,13 @@ import { EstadoTarefas } from '../../servicos/estado-tarefas';
     @if (tarefas.isLoading()) {
       <p class="carregando">Carregando...</p>
     }
-@if (tarefas.hasValue()) {
+    @if (tarefas.error()) {
+      <p class="erro" role="alert">
+        ⚠ Não foi possível carregar os dados. Verifique se o json-server está rodando.
+        <button type="button" class="botao-secundario" (click)="tarefas.reload()">Tentar de novo</button>
+      </p>
+    }
+    @if (tarefas.hasValue()) {
       <div class="grade">
         @for (tarefa of estado.tarefasFiltradas(); track tarefa.id) {
           <app-cartao-tarefa [tarefa]="tarefa" (excluida)="tarefas.reload()" />

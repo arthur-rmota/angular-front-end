@@ -14,7 +14,13 @@ import { Api } from '../../api';
     @if (projetos.isLoading()) {
       <p class="carregando">Carregando...</p>
     }
-@if (projetos.hasValue()) {
+    @if (projetos.error()) {
+      <p class="erro" role="alert">
+        ⚠ Não foi possível carregar os dados. Verifique se o json-server está rodando.
+        <button type="button" class="botao-secundario" (click)="projetos.reload()">Tentar de novo</button>
+      </p>
+    }
+    @if (projetos.hasValue()) {
       <ul class="lista-projetos">
         @for (projeto of projetos.value(); track projeto.id) {
           <li>

@@ -12,7 +12,13 @@ import { formatarData } from '../../rotulos';
     @if (projeto.isLoading()) {
       <p class="carregando">Carregando...</p>
     }
-@if (projeto.hasValue()) {
+    @if (projeto.error()) {
+      <p class="erro" role="alert">
+        ⚠ Não foi possível carregar os dados. Verifique se o json-server está rodando.
+        <button type="button" class="botao-secundario" (click)="projeto.reload()">Tentar de novo</button>
+      </p>
+    }
+    @if (projeto.hasValue()) {
       @let p = projeto.value();
       <h1>{{ p.nome }}</h1>
       <p>{{ p.descricao }}</p>

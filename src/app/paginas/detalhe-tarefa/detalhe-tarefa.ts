@@ -31,7 +31,13 @@ import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
       @if (tarefa.isLoading()) {
       <p class="carregando">Carregando...</p>
     }
-}
+    @if (tarefa.error()) {
+      <p class="erro" role="alert">
+        ⚠ Não foi possível carregar os dados. Verifique se o json-server está rodando.
+        <button type="button" class="botao-secundario" (click)="tarefa.reload()">Tentar de novo</button>
+      </p>
+    }
+    }
   `,
 })
 export class DetalheTarefa {

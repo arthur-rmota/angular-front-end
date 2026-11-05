@@ -326,6 +326,17 @@ a {
   gap: 12px;
   margin: 0 0 24px;
 }
+/* Carregando, erro de API e botão de excluir */
+.carregando {
+  color: var(--purple);
+  font-weight: 600;
+}
+
+.erro button {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
 .botao-excluir {
   margin-top: 30px;
   margin-left: 8px;
@@ -340,10 +351,4 @@ a {
 
 .botao-excluir:hover {
   background: #ffc9dd;
-}
-
-/* Carregando, erro de API e botão de excluir */
-.carregando {
-  color: var(--purple);
-  font-weight: 600;
 }

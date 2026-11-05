@@ -27,7 +27,13 @@ import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
       @if (projeto.isLoading()) {
       <p class="carregando">Carregando...</p>
     }
-}
+    @if (projeto.error()) {
+      <p class="erro" role="alert">
+        ⚠ Não foi possível carregar os dados. Verifique se o json-server está rodando.
+        <button type="button" class="botao-secundario" (click)="projeto.reload()">Tentar de novo</button>
+      </p>
+    }
+    }
   `,
 })
 export class EditarProjeto {
