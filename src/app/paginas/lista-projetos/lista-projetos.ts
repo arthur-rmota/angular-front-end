@@ -16,7 +16,7 @@ import { Api } from '../../api';
     }
     @if (projetos.error()) {
       <p class="erro" role="alert">
-        ⚠ Não foi possível carregar os dados. Verifique se o json-server está rodando.
+        ⚠ Não foi possível carregar os dados.
         <button type="button" class="botao-secundario" (click)="projetos.reload()">Tentar de novo</button>
       </p>
     }

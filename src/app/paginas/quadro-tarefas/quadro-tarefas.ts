@@ -41,13 +41,17 @@ export class QuadroTarefas {
   ];
 
   constructor() {
-   effect(() => { 
-    const tarefas = this.tarefas.value();
+   effect(() => {
 
-    if (tarefas) {
-      untracked(() => this.estado.definirTarefas(tarefas));
+    if (this.tarefas.hasValue()) {
+      const tarefas = this.tarefas.value();
+
+      untracked(() => {
+        this.estado.definirTarefas(tarefas);
+      });
     }
-    });
+
+  });
   }
 
   tarefasPorStatus(status: Status): Tarefa[] {

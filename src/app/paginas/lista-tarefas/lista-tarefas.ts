@@ -21,11 +21,14 @@ import { EstadoTarefas } from '../../servicos/estado-tarefas';
 <app-filtros-tarefas />
 
     @if (tarefas.isLoading()) {
-      <p class="carregando">Carregando...</p>
+      <div class="loading">
+        <div class="spinner"> </div>
+        <p class="carregando">Carregando...</p>
+      </div>
     }
     @if (tarefas.error()) {
       <p class="erro" role="alert">
-        ⚠ Não foi possível carregar os dados. Verifique se o json-server está rodando.
+        ⚠ Não foi possível carregar os dados.
         <button type="button" class="botao-secundario" (click)="tarefas.reload()">Tentar de novo</button>
       </p>
     }
@@ -50,16 +53,21 @@ export class ListaTarefas {
   private api = inject(Api);
   estado = inject(EstadoTarefas);
 
-  tarefas = rxResource({ stream: () => this.api.listarTarefas() });
+  tarefas = rxResource({ 
+    stream: () => this.api.listarTarefas() 
+  });
 
   constructor() {
-    effect(
-      () => {
-        const tarefas = this.tarefas.value();
+    effect(() => {
 
-        if (tarefas) {
-          untracked(() => { this.estado.definirTarefas(tarefas) });
-        }
+    if (this.tarefas.hasValue()) {
+      const tarefas = this.tarefas.value();
+
+      untracked(() => {
+        this.estado.definirTarefas(tarefas);
       });
+    }
+
+  });
   }
 }

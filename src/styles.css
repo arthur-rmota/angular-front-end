@@ -48,6 +48,43 @@ body {
   margin: 20px 0;
 }
 
+.erro{
+  padding: 24px;
+  text-align: center;
+  background: #f8f5ff;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 30px;
+  color: var(--purple);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e5dcf5;
+  border-top: 4px solid var(--purple);
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+
+.loading p {
+  font-weight: 600;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 a {
   color: #5b21b6;
 }

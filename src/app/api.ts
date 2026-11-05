@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, timeout } from 'rxjs';
 import type { NovaTarefa, Projeto, Tarefa } from '../tipos';
 
 export type ProjetoComTarefas = Projeto & { tarefas: Tarefa[] };
@@ -16,21 +16,21 @@ export class Api {
   private url = 'http://localhost:3000';
 
   listarTarefas(): Observable<Tarefa[]> {
-    return this.http.get<Tarefa[]>(`${this.url}/tarefas`);
+    return this.http.get<Tarefa[]>(`${this.url}/tarefas`).pipe(timeout({first: 10000}));
   }
 
   buscarTarefa(id: string): Observable<Tarefa> {
-    return this.http.get<Tarefa>(`${this.url}/tarefas/${id}`);
+    return this.http.get<Tarefa>(`${this.url}/tarefas/${id}`).pipe(timeout({ first: 10000 }));
   }
 
   listarProjetos(): Observable<Projeto[]> {
-    return this.http.get<Projeto[]>(`${this.url}/projetos`);
+    return this.http.get<Projeto[]>(`${this.url}/projetos`).pipe(timeout({ first: 10000 }));
   }
 
   // GET /tarefas?projetoId=1 volta vazio no json-server (o id é texto no db.json),
   // então as tarefas do projeto vêm embutidas com _embed.
   buscarProjeto(id: string): Observable<ProjetoComTarefas> {
-    return this.http.get<ProjetoComTarefas>(`${this.url}/projetos/${id}?_embed=tarefas`);
+    return this.http.get<ProjetoComTarefas>(`${this.url}/projetos/${id}?_embed=tarefas`).pipe(timeout({ first: 10000 }));
   }
 
   // as funções de escrita só enviam o pedido quando chama .subscribe() nelas
