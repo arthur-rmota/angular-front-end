@@ -5,20 +5,6 @@
   box-sizing: border-box;
 }
 
-
-.disciplina {
-  display: inline-block;
-  margin: 10px 0 0;
-  padding: 5px 12px;
-
-  border-radius: 20px;
-  background: #eee6f8;
-  color: #7045a5;
-
-  font-size: 13px;
-  font-weight: 600;
-}
-
 /* ===== AÇÕES ===== */
 
 .acoes {
@@ -28,17 +14,17 @@
   gap: 12px;
 }
 
-
 /* ===== INFORMAÇÕES ===== */
 
 .informacoes {
+  width: 100%;
   padding: 22px;
   margin-bottom: 30px;
+  box-sizing: border-box;
 
+  background: #ffffff3f;
   border: 1px solid #e9e1f2;
   border-radius: 15px;
-
-  background: #fff;
   box-shadow: 0 3px 12px #38205208;
 }
 
@@ -60,12 +46,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px 25px;
-
   margin-top: 20px;
   padding-top: 15px;
-
   border-top: 1px solid #eee8f4;
-
   color: #79678d;
   font-size: 13px;
 }
@@ -78,6 +61,14 @@
 
 .secao-tarefas {
   width: 100%;
+  padding: 22px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+
+  background: #ffffffdd;
+  border: 1px solid #e9e1f2;
+  border-radius: 15px;
+  box-shadow: 0 3px 12px #38205208;
 }
 
 .cabecalho-tarefas {
@@ -86,7 +77,6 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 15px;
-
   margin-bottom: 20px;
 }
 
@@ -121,13 +111,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   padding: 45px 20px;
   text-align: center;
-
   border: 1px dashed #d9cce7;
   border-radius: 15px;
-
   background: #faf8fc;
 }
 
@@ -145,7 +132,6 @@
 .vazio p {
   max-width: 350px;
   margin: 9px 0 0;
-
   color: #8c7b9c;
   font-size: 13px;
   line-height: 1.6;
@@ -160,16 +146,9 @@
 }
 
 @media (max-width: 650px) {
-  .pagina-projeto {
-    padding: 5px 0 20px;
+  .heading h1 {
+    font-size: 30px;
   }
-
-  .cabecalho {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  
 
   .acoes {
     width: 100%;
