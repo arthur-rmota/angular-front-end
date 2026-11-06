@@ -58,7 +58,7 @@
       "projetoId": "1",
       "titulo": "Listar as tarefas na tela",
       "descricao": "Primeira entrega do Marco 2",
-      "status": "em-andamento",
+      "status": "a-fazer",
       "prioridade": "media",
       "responsavel": "Diego",
       "prazo": "2026-10-14"
@@ -78,7 +78,7 @@
       "projetoId": "2",
       "titulo": "Criar as tabelas do banco de dados",
       "descricao": "Implementar as tabelas livro, leitor e empréstimo com seus respectivos relacionamentos",
-      "status": "a-fazer",
+      "status": "em-andamento",
       "prioridade": "media",
       "responsavel": "Bruno",
       "prazo": "2026-10-22"

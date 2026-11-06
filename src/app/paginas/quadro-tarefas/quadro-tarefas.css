@@ -165,6 +165,14 @@
   box-sizing: border-box;
 }
 
+.cartoes::after {
+  content: '';
+  display: block;
+  flex: 0 0 270px;
+  width: 100%;
+  pointer-events: none;
+}
+
 /* ===== COLUNAS VAZIAS ===== */
 
 .vazio {
