@@ -1,0 +1,97 @@
+@if (projeto.hasValue()) {
+  @let p = projeto.value();
+
+    <div class="heading"><span class="spark"></span><h1>{{ p.nome }}</h1></div>
+    <div class="acoes">
+        <app-botao-voltar />
+        <a class="botao" [routerLink]="['/projetos', p.id, 'editar']">
+          Editar Projeto
+        </a>
+      </div>
+
+    <!-- Informações do projeto -->
+    <section class="informacoes">
+      <h2>Sobre o projeto</h2>
+
+      <p class="descricao">
+        {{ p.descricao }}
+      </p>
+
+      <div class="detalhes">
+        <span>
+          <strong>Disciplina:</strong> {{ p.disciplina }}
+        </span>
+
+        <span>
+          <strong>Criado em:</strong> {{ formatarData(p.criadoEm) }}
+        </span>
+      </div>
+    </section>
+
+    <!-- Tarefas -->
+    <section class="secao-tarefas">
+
+      <div class="cabecalho-tarefas">
+        <div>
+          <h2>Tarefas do projeto</h2>
+          <p>Gerencie as atividades relacionadas a este projeto.</p>
+        </div>
+
+        <a
+          class="botao"
+          routerLink="/tarefas/nova"
+          [queryParams]="{ projetoId: p.id }"
+        >
+          + Nova tarefa
+        </a>
+      </div>
+
+      @if (p.tarefas.length > 0) {
+        <div class="grade">
+          @for (tarefa of p.tarefas; track tarefa.id) {
+            <app-cartao-tarefa
+              [tarefa]="tarefa"
+              (excluida)="projeto.reload()"
+            />
+          }
+        </div>
+      } @else {
+        <div class="vazio">
+          <span class="icone-vazio">📋</span>
+
+          <h3>Nenhuma tarefa cadastrada</h3>
+
+          <p>
+            Este projeto ainda não possui tarefas.
+            Comece criando sua primeira atividade!
+          </p>
+        </div>
+      }
+
+    </section>
+
+} @else if (naoExiste()) {
+
+  <app-nao-encontrada />
+
+} @else if (projeto.isLoading()) {
+
+  <div class="loading">
+    <div class="spinner"></div>
+    <p class="carregando">Carregando projeto...</p>
+  </div>
+
+} @else if (projeto.error()) {
+
+  <p class="erro" role="alert">
+    ⚠ Não foi possível carregar os dados.
+
+    <button
+      type="button"
+      class="botao-secundario"
+      (click)="projeto.reload()"
+    >
+      Tentar novamente
+    </button>
+  </p>
+}

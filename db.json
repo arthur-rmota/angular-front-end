@@ -78,7 +78,7 @@
       "projetoId": "2",
       "titulo": "Criar as tabelas do banco de dados",
       "descricao": "Implementar as tabelas livro, leitor e empréstimo com seus respectivos relacionamentos",
-      "status": "em-andamento",
+      "status": "em-revisao",
       "prioridade": "media",
       "responsavel": "Bruno",
       "prazo": "2026-10-22"

@@ -4,15 +4,16 @@ import { Api } from '../../api';
 import { FormularioTarefa } from '../../componentes/formulario-tarefa/formulario-tarefa';
 import type { NovaTarefa as DadosTarefa } from '../../../tipos';
 import { finalize } from 'rxjs';
+import { BotaoVoltar } from '../../componentes/botao-voltar/botao-voltar';
 
 @Component({
   selector: 'app-nova-tarefa',
-  imports: [RouterLink, FormularioTarefa],
+  imports: [FormularioTarefa, BotaoVoltar],
   template: `
     <div class="pagina-formulario">
     <div class="heading"><span class="spark"></span><h1>Nova tarefa</h1></div>
     <div class="acoes">
-      <a routerLink="/" class="botao">← Voltar para as tarefas</a>
+      <app-botao-voltar />
     </div>
     @if (erroApi()) { <p class="erro" role="alert">⚠ {{ erroApi() }}</p> } 
     

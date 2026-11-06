@@ -354,19 +354,16 @@ a {
   }
 }
 
-
-/* ========================================
-   Celulares
-======================================== */
-
+/* Celulares */
 @media (max-width: 680px) {
-
-  /* Esconde os arcos antigos */
-  .arco {
+  .grade {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+.arco {
     display: none !important;
   }
 
-  /* Fundo limpo, sem manchas extras */
   body {
     background: linear-gradient(
       120deg,
@@ -375,8 +372,6 @@ a {
       #f9f7ff
     );
   }
-
-  /* Desenha dois arcos independentes no rodapé */
   body::after {
     content: "";
     position: fixed;
@@ -409,16 +404,21 @@ a {
     background-size: 50% 135px, 50% 135px;
     background-position: left bottom, right bottom;
   }
-
-  /* Conteúdo sempre acima da decoração */
-  .conteudo {
-    position: relative;
-    z-index: 1;
+  .heading {
+    gap: 10px;
+    margin-left: 0;
+    margin-bottom: 38px;
   }
 
-  .cabecalho {
-    position: relative;
-    z-index: 2;
+  .heading h1 {
+    font-size: 43px;
   }
 
+  .heading .spark {
+    font-size: 43px;
+  }
+
+  .pagina-formulario {
+    max-width: 100%;
+  }
 }

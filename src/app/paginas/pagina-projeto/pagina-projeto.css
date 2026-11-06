@@ -1,0 +1,195 @@
+:host {
+  display: block;
+  width: 100%;
+  color: #302541;
+  box-sizing: border-box;
+}
+
+
+.disciplina {
+  display: inline-block;
+  margin: 10px 0 0;
+  padding: 5px 12px;
+
+  border-radius: 20px;
+  background: #eee6f8;
+  color: #7045a5;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ===== AÇÕES ===== */
+
+.acoes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+
+/* ===== INFORMAÇÕES ===== */
+
+.informacoes {
+  padding: 22px;
+  margin-bottom: 30px;
+
+  border: 1px solid #e9e1f2;
+  border-radius: 15px;
+
+  background: #fff;
+  box-shadow: 0 3px 12px #38205208;
+}
+
+.informacoes h2 {
+  margin: 0 0 12px;
+  color: #49345f;
+  font-size: 18px;
+}
+
+.descricao {
+  margin: 0;
+  color: #79678d;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.detalhes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 25px;
+
+  margin-top: 20px;
+  padding-top: 15px;
+
+  border-top: 1px solid #eee8f4;
+
+  color: #79678d;
+  font-size: 13px;
+}
+
+.detalhes strong {
+  color: #49345f;
+}
+
+/* ===== SEÇÃO DE TAREFAS ===== */
+
+.secao-tarefas {
+  width: 100%;
+}
+
+.cabecalho-tarefas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  margin-bottom: 20px;
+}
+
+.cabecalho-tarefas h2 {
+  margin: 0;
+  color: #49345f;
+  font-size: 21px;
+  font-weight: 750;
+}
+
+.cabecalho-tarefas p {
+  margin: 6px 0 0;
+  color: #8c7b9c;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ===== GRADE DE TAREFAS ===== */
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+  width: 100%;
+}
+
+/* ===== ESTADO VAZIO ===== */
+
+.vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 45px 20px;
+  text-align: center;
+
+  border: 1px dashed #d9cce7;
+  border-radius: 15px;
+
+  background: #faf8fc;
+}
+
+.icone-vazio {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.vazio h3 {
+  margin: 0;
+  color: #49345f;
+  font-size: 17px;
+}
+
+.vazio p {
+  max-width: 350px;
+  margin: 9px 0 0;
+
+  color: #8c7b9c;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 1000px) {
+  .grade {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .pagina-projeto {
+    padding: 5px 0 20px;
+  }
+
+  .cabecalho {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  
+
+  .acoes {
+    width: 100%;
+  }
+
+  .informacoes {
+    padding: 17px;
+  }
+
+  .cabecalho-tarefas {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .grade {
+    grid-template-columns: 1fr;
+  }
+
+  .detalhes {
+    flex-direction: column;
+    gap: 9px;
+  }
+}

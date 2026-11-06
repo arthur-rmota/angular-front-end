@@ -1,17 +1,21 @@
 import { Component, inject, input, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { Api, type NovoProjeto } from '../../api';
 import { FormularioProjeto } from '../../componentes/formulario-projeto/formulario-projeto';
 import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
+import { BotaoVoltar } from '../../componentes/botao-voltar/botao-voltar';
 
 @Component({
   selector: 'app-editar-projeto',
-  imports: [RouterLink, FormularioProjeto, NaoEncontrada],
+  imports: [ FormularioProjeto, NaoEncontrada, BotaoVoltar],
   template: `
     @if (projeto.hasValue()) {
-      <a [routerLink]="['/projetos', id()]">← Voltar para o projeto</a>
+      
       <div class="heading"><span class="spark"></span><h1>Editar projeto</h1></div>
+      <div class="acoes">
+        <app-botao-voltar />
+      </div>
 
       @if (erroApi()) { <p class="erro" role="alert">⚠ {{ erroApi() }}</p> }
 

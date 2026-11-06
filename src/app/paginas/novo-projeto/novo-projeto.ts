@@ -1,15 +1,16 @@
 import { Component, inject, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { Api, type NovoProjeto } from '../../api';
 import { FormularioProjeto } from '../../componentes/formulario-projeto/formulario-projeto';
+import { BotaoVoltar } from '../../componentes/botao-voltar/botao-voltar';
 
 @Component({
   selector: 'app-novo-projeto',
-  imports: [RouterLink, FormularioProjeto],
+  imports: [FormularioProjeto, BotaoVoltar],
   template: `
     <div class="heading"><span class="spark"></span><h1>Novo projeto</h1></div>
     <div class="acoes">
-          <a routerLink="/projetos" class="botao">← Voltar para os projetos</a>
+      <app-botao-voltar />
     </div>
     @if (erroApi()) { <p class="erro" role="alert">⚠ {{ erroApi() }}</p> }
     <app-formulario-projeto textoBotao="Criar projeto" [salvando]="salvando()" (salvar)="criar($event)" />
