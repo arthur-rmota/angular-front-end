@@ -354,28 +354,71 @@ a {
   }
 }
 
-/* Celulares */
+
+/* ========================================
+   Celulares
+======================================== */
+
 @media (max-width: 680px) {
-  .grade {
-    grid-template-columns: 1fr;
-    gap: 18px;
+
+  /* Esconde os arcos antigos */
+  .arco {
+    display: none !important;
   }
 
-  .heading {
-    gap: 10px;
-    margin-left: 0;
-    margin-bottom: 38px;
+  /* Fundo limpo, sem manchas extras */
+  body {
+    background: linear-gradient(
+      120deg,
+      #f8f7ff,
+      #f0effa 55%,
+      #f9f7ff
+    );
   }
 
-  .heading h1 {
-    font-size: 43px;
+  /* Desenha dois arcos independentes no rodapé */
+  body::after {
+    content: "";
+    position: fixed;
+    z-index: 0;
+    pointer-events: none;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 135px;
+
+    background-image:
+      radial-gradient(
+        ellipse 175px 125px at 0% 100%,
+        transparent 0 57%,
+        #ff9fd6 58% 70%,
+        #8fd3ff 71% 83%,
+        transparent 84%
+      ),
+      radial-gradient(
+        ellipse 175px 125px at 100% 100%,
+        transparent 0 57%,
+        #a6e88f 58% 70%,
+        #8fd3ff 71% 83%,
+        transparent 84%
+      );
+
+    background-repeat: no-repeat;
+    background-size: 50% 135px, 50% 135px;
+    background-position: left bottom, right bottom;
   }
 
-  .heading .spark {
-    font-size: 43px;
+  /* Conteúdo sempre acima da decoração */
+  .conteudo {
+    position: relative;
+    z-index: 1;
   }
 
-  .pagina-formulario {
-    max-width: 100%;
+  .cabecalho {
+    position: relative;
+    z-index: 2;
   }
+
 }
