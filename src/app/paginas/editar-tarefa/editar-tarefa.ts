@@ -1,15 +1,16 @@
 import { Component, inject, input, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { Api } from '../../api';
 import { FormularioTarefa } from '../../componentes/formulario-tarefa/formulario-tarefa';
 import type { NovaTarefa } from '../../../tipos';
 import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
 import { finalize } from 'rxjs';
+import { BotaoVoltar } from '../../componentes/botao-voltar/botao-voltar';
 
 @Component({
   selector: 'app-editar-tarefa',
-  imports: [RouterLink, FormularioTarefa, NaoEncontrada],
+  imports: [ FormularioTarefa, NaoEncontrada, BotaoVoltar],
   template: `
     @if (tarefa.hasValue()) {
       <div class="pagina-formulario">
@@ -18,7 +19,7 @@ import { finalize } from 'rxjs';
           <h1>Editar tarefa</h1>
         </div>
         <div class="acoes">
-          <a [routerLink]="['/tarefas', id()]" class="botao">← Voltar para a tarefa</a>
+          <app-botao-voltar />
         </div>
         @if (erroApi()) {
           <p class="erro" role="alert">⚠ {{ erroApi() }}</p>
