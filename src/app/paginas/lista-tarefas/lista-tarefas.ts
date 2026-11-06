@@ -13,8 +13,8 @@ import { EstadoTarefas } from '../../servicos/estado-tarefas';
   template: `
 <div class="heading"><span class="spark"></span><h1>Tarefas</h1></div>
     <div class="acoes">
-      <a routerLink="/tarefas/nova" class="botao">+ Nova tarefa</a>
       <app-alternar-visao />
+      <a routerLink="/tarefas/nova" class="botao">+ Nova tarefa</a>
     </div>
     
   

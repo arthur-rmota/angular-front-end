@@ -7,11 +7,12 @@ import { FiltrosTarefas } from '../../componentes/filtros-tarefas/filtros-tarefa
 import { AlternarVisao } from '../../componentes/alternar-visao/alternar-visao';
 import { EstadoTarefas } from '../../servicos/estado-tarefas';
 import type {Status, Tarefa} from '../../../tipos';
+import { CdkDropList, CdkDrag, CdkDragDrop, CdkDropListGroup } from '@angular/cdk/drag-drop';
 
 
 @Component({
   selector: 'app-quadro-tarefas',
-  imports: [RouterLink, CartaoTarefa, FiltrosTarefas, AlternarVisao],
+  imports: [RouterLink, CartaoTarefa, FiltrosTarefas, AlternarVisao, CdkDropList, CdkDrag, CdkDropListGroup],
   styleUrl: './quadro-tarefas.css',
   templateUrl: './quadro-tarefas.html',
 })
@@ -22,6 +23,27 @@ export class QuadroTarefas {
   colunaTarefa(status: Status): boolean {
     return this.tarefasPorStatus(status).length > 0; //retorna true caso tenha alguma tarefa
   }
+
+  moverTarefa (event: CdkDragDrop<Tarefa[]>, novoStatus: Status){
+    const tarefa = event.previousContainer.data[event.previousIndex];
+
+    if(tarefa.status === novoStatus) return;
+
+    const tarefaAtualizada = {
+      ...tarefa,
+      status: novoStatus
+    };
+
+    this.api.atualizarTarefa(tarefa.id, tarefaAtualizada).subscribe({
+      next: () => {
+        this.estado.atualizarTarefa(tarefaAtualizada);
+      },
+      error: (erro) => {
+        console.error('Não foi possível atualizar a tarefa', erro);
+      }
+    });
+  }
+
 
   get quantidadeColunas(): number {
     return this.colunas.filter(

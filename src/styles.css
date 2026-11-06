@@ -343,10 +343,11 @@ a {
   background: #ffc9dd;
 }
 
-/* Responsividade */
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
 
 /* Tablets e telas médias */
-
 @media (max-width: 1050px) {
   .grade {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -354,7 +355,6 @@ a {
 }
 
 /* Celulares */
-
 @media (max-width: 680px) {
   .grade {
     grid-template-columns: 1fr;

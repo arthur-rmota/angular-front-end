@@ -32,6 +32,14 @@ export class EstadoTarefas {
         });
     });
 
+    atualizarTarefa(tarefaAtualizada: Tarefa): void {
+        this.tarefas.update(tarefas => 
+            tarefas.map(tarefa => 
+                tarefa.id === tarefaAtualizada.id ? tarefaAtualizada : tarefa
+            )
+        );
+    }
+
     definirTarefas(tarefas: Tarefa[]): void {
         this.tarefas.set(tarefas);
     }

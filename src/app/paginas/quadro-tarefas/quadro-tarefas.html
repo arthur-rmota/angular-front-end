@@ -1,34 +1,31 @@
-<div class="heading">
-  <span class="spark"></span>
-  <h1>Quadro de tarefas</h1>
-</div>
-
-<div class="acoes">
-  <app-alternar-visao />
-  <a routerLink="/tarefas/nova" class="botao">+ Nova tarefa</a>
-</div>
-
-<app-filtros-tarefas />
-
-@if (tarefas.isLoading()) {
-  <div class="loading">
-    <div class="spinner"></div>
-    <p class="carregando">Carregando...</p>
+<div class="conteudo-desktop">
+  <div class="heading">
+    <span class="spark"></span>
+    <h1>Quadro de tarefas</h1>
   </div>
-} @else if (tarefas.error()) {
-  <p class="erro" role="alert">
-    ⚠ Não foi possível carregar os dados.
-    <button type="button" class="botao-secundario" (click)="tarefas.reload()">
-      Tentar de novo
-    </button>
-  </p>
-} @else {
-  <div
-    class="quadro"
-    [style.grid-template-columns]="'repeat(' + quantidadeColunas + ', minmax(0, 1fr))'"
-  >
-    @for (coluna of colunas; track coluna.status) {
-      @if (colunaTarefa(coluna.status)) {
+
+  <div class="acoes">
+    <app-alternar-visao />
+    <a routerLink="/tarefas/nova" class="botao">+ Nova tarefa</a>
+  </div>
+
+  <app-filtros-tarefas />
+
+  @if (tarefas.isLoading()) {
+    <div class="loading">
+      <div class="spinner"></div>
+      <p class="carregando">Carregando...</p>
+    </div>
+  } @else if (tarefas.error()) {
+    <p class="erro" role="alert">
+      ⚠ Não foi possível carregar os dados.
+      <button type="button" class="botao-secundario" (click)="tarefas.reload()">
+        Tentar de novo
+      </button>
+    </p>
+  } @else {
+    <div class="quadro" cdkDropListGroup>
+      @for (coluna of colunas; track coluna.status) {
         <section class="coluna">
           <h2>{{ coluna.titulo }}</h2>
 
@@ -38,13 +35,37 @@
             <span class="contador"> {{ tarefasPorStatus(coluna.status).length }} tarefas </span>
           }
 
-          <div class="cartoes">
+          <div
+            class="cartoes"
+            cdkDropList
+            [cdkDropListData]="tarefasPorStatus(coluna.status)"
+            (cdkDropListDropped)="moverTarefa($event, coluna.status)"
+          >
             @for (tarefa of tarefasPorStatus(coluna.status); track tarefa.id) {
-              <app-cartao-tarefa [tarefa]="tarefa" (excluida)="tarefas.reload()" />
+              <app-cartao-tarefa
+                cdkDrag
+                [cdkDragData]="tarefa"
+                [tarefa]="tarefa"
+                (excluida)="tarefas.reload()"
+              />
             }
           </div>
         </section>
       }
-    }
+    </div>
+  }
+</div>
+
+<div class="bloqueio-mobile">
+  <div class="aviso-mobile">
+    <span class="icone-mobile">💻</span>
+
+    <h2>Acesso pelo computador</h2>
+
+    <p>
+      Esta aplicação foi desenvolvida para utilização em computadores.
+      Acesse pelo PC ou notebook para aproveitar todas as funcionalidades.
+    </p>
+    <a class="botao" routerLink="/" routerLinkActive="ativo">Voltar</a>
   </div>
-}
+</div>

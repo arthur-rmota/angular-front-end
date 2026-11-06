@@ -58,7 +58,7 @@
       "projetoId": "1",
       "titulo": "Listar as tarefas na tela",
       "descricao": "Primeira entrega do Marco 2",
-      "status": "a-fazer",
+      "status": "em-andamento",
       "prioridade": "media",
       "responsavel": "Diego",
       "prazo": "2026-10-14"
@@ -87,7 +87,7 @@
       "titulo": "Atualizar github projects",
       "descricao": "",
       "projetoId": "1",
-      "status": "em-andamento",
+      "status": "a-fazer",
       "prioridade": "baixa",
       "responsavel": "arthur",
       "prazo": "2026-10-30",
@@ -113,5 +113,6 @@
       "prazo": "2026-12-31",
       "id": "VIXmCVrR15s"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

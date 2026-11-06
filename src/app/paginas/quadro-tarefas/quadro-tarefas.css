@@ -6,6 +6,57 @@
   color: #302541;
 }
 
+/* Cartão que pode ser arrastado */
+[cdkDrag] {
+  cursor: grab;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Enquanto estiver segurando o cartão */
+[cdkDrag]:active {
+  cursor: grabbing;
+}
+
+/* Cartão durante o arraste */
+.cdk-drag-dragging {
+  cursor: grabbing !important;
+  opacity: 0.9;
+}
+
+/* Animação ao trocar de posição */
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Coluna que está recebendo o cartão */
+.cdk-drop-list-dragging .cartoes {
+  transition: background-color 200ms ease;
+}
+
+/* Cartão que está sendo arrastado */
+.cdk-drag-preview {
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  transform: rotate(2deg);
+}
+
+/* Espaço deixado pelo cartão */
+.cdk-drag-placeholder {
+  opacity: 0.3;
+  border: 2px dashed var(--purple);
+  border-radius: 12px;
+}
+
+/* Suaviza a movimentação dos cartões */
+.cartoes.cdk-drop-list-dragging [cdkDrag]:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+
+
 /* ===== ÁREA DO QUADRO ===== */
 
 .quadro {
@@ -60,7 +111,7 @@
 }
 
 .coluna h2::before {
-  content: "";
+  content: '';
   display: inline-block;
   width: 9px;
   height: 9px;
@@ -129,62 +180,60 @@
   text-align: center;
 }
 
-/* ===== TELAS MÉDIAS ===== */
-
-@media (max-width: 1100px) {
-  .quadro {
-    gap: 12px;
-  }
-
-  .coluna {
-    padding: 12px;
-  }
-
-  .coluna h2 {
-    font-size: 13px;
-  }
+/* Aviso oculto por padrão */
+.bloqueio-mobile {
+  display: none;
 }
 
-/* ===== TABLETS ===== */
+/* Bloqueia a visualização em telas pequenas */
+@media (max-width: 767px) {
 
-@media (max-width: 900px) {
-  .quadro {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
+  .conteudo-desktop {
+    display: none !important;
   }
 
-  .coluna {
-    padding: 15px;
+  .bloqueio-mobile {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+    box-sizing: border-box;
+
+    background: #f8f6fb;
   }
 
-  .coluna h2 {
-    font-size: 15px;
-  }
-}
+  .aviso-mobile {
+    width: 100%;
+    max-width: 350px;
+    padding: 30px 22px;
 
-/* ===== CELULARES ===== */
+    text-align: center;
 
-@media (max-width: 520px) {
-  .heading h1 {
-    font-size: 23px;
-  }
+    background: white;
+    border: 1px solid #e9e1f2;
+    border-radius: 20px;
 
-  .acoes {
-    justify-content: flex-start;
-    margin: 14px 0 18px;
+    box-shadow: 0 8px 25px #38205212;
   }
 
-  .botao{
-    margin-top: 20px;
+  .icone-mobile {
+    font-size: 45px;
   }
 
-
-  .quadro {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
+  .aviso-mobile h2 {
+    color: #49345f;
+    font-size: 22px;
+    margin: 16px 0 10px;
   }
 
-  .coluna {
-    padding: 14px;
+  .aviso-mobile p {
+    color: #79678d;
+    font-size: 14px;
+    line-height: 1.6;
   }
 }
