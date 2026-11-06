@@ -6,36 +6,13 @@ import { Api } from '../../api';
 @Component({
   selector: 'app-lista-projetos',
   imports: [RouterLink],
-  template: `
-  <div class="heading"><span class="spark"></span><h1>Projetos</h1></div>
-  <div class="acoes">
-    <a routerLink="/projetos/novo" class="botao">+ Novo projeto</a>
-  </div>
-    @if (projetos.isLoading()) {
-      <div class="loading">
-        <div class="spinner"> </div>
-        <p class="carregando">Carregando...</p>
-      </div>
-    } @else if (projetos.error()) {
-      <p class="erro" role="alert">
-        ⚠ Não foi possível carregar os dados.
-        <button type="button" class="botao-secundario" (click)="projetos.reload()">Tentar de novo</button>
-      </p>
-    } @else if (projetos.hasValue()) {
-      <ul class="lista-projetos">
-        @for (projeto of projetos.value(); track projeto.id) {
-          <li>
-            <a [routerLink]="['/projetos', projeto.id]"class="botao-secundario">{{ projeto.nome }}</a>
-            <span>{{ projeto.disciplina }}</span>
-          </li>
-        } @empty {
-          <p class="vazio"> Nenhum projeto cadastrado</p>
-        }
-      </ul>
-    }
-  `,
+  templateUrl: './lista-projetos.html',
+  styleUrl: './lista-projetos.css',
 })
 export class ListaProjetos {
   private api = inject(Api);
-  projetos = rxResource({ stream: () => this.api.listarProjetos() });
+
+  projetos = rxResource({
+    stream: () => this.api.listarProjetos()
+  });
 }
