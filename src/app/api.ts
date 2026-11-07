@@ -47,7 +47,7 @@ export class Api {
   }
 
   criarProjeto(projeto: NovoProjeto): Observable<Projeto> {
-    return this.http.post<Projeto>(`${this.url}/projetos`, { ...projeto, criadoEm: hoje() });
+    return this.http.post<Projeto>(`${this.url}/projetos`, { ...projeto, criadoEm: hoje() }).pipe(delay(5000));
   }
 
   atualizarProjeto(id: string, dados: Partial<NovoProjeto>): Observable<Projeto> {

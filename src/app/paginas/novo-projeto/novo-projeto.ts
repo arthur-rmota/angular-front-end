@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Api, type NovoProjeto } from '../../api';
 import { FormularioProjeto } from '../../componentes/formulario-projeto/formulario-projeto';
 import { BotaoVoltar } from '../../componentes/botao-voltar/botao-voltar';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-novo-projeto',
@@ -26,10 +27,10 @@ export class NovoProjetoPagina {
     // atenção: a classe se chama NovoProjeto e o tipo também; veja a nota abaixo
     this.salvando.set(true);
     this.erroApi.set('');
-    this.api.criarProjeto(projeto).subscribe({
+    this.api.criarProjeto(projeto).pipe(finalize(() => this.salvando.set(false)))
+    .subscribe({
       next: () => this.router.navigate(['/projetos']),
       error: () => {
-        this.salvando.set(false);
         this.erroApi.set('Não foi possível salvar. Tente novamente.');
       },
     });

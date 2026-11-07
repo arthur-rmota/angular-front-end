@@ -1,4 +1,3 @@
-import { Service } from '@angular/core';
 import { Injectable, computed, signal } from '@angular/core';
 import type { Tarefa, Status, Prioridade } from '../../tipos';
 

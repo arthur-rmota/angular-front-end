@@ -5,6 +5,7 @@ import { Api, type NovoProjeto } from '../../api';
 import { FormularioProjeto } from '../../componentes/formulario-projeto/formulario-projeto';
 import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
 import { BotaoVoltar } from '../../componentes/botao-voltar/botao-voltar';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-editar-projeto',
@@ -61,10 +62,10 @@ export class EditarProjeto {
   atualizar(dados: NovoProjeto) {
     this.salvando.set(true);
     this.erroApi.set('');
-    this.api.atualizarProjeto(this.id(), dados).subscribe({
+    this.api.atualizarProjeto(this.id(), dados).pipe(finalize(() => this.salvando.set(false)))
+    .subscribe({
       next: () => this.router.navigate(['/projetos', this.id()]),
       error: () => {
-        this.salvando.set(false);
         this.erroApi.set('Não foi possível salvar. Verifique a API e tente novamente.');
       },
     });
