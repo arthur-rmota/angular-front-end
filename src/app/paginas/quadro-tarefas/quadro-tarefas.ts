@@ -39,7 +39,7 @@ export class QuadroTarefas {
         this.estado.atualizarTarefa(tarefaAtualizada);
       },
       error: (erro) => {
-        console.error('Não foi possível atualizar a tarefa', erro);
+        alert('Não foi possível atualizar a tarefa, tente novamente');
       }
     });
   }
