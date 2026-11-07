@@ -16,7 +16,7 @@ template: `
     <div class="topo-tarefas">
       <div class="heading">
         <span class="spark"></span>
-        <h1>Tarefas</h1>
+        <h1>Lista de Tarefas</h1>
       </div>
 
       <div class="acoes">

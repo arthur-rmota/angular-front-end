@@ -200,4 +200,7 @@
   .grade-projetos {
     grid-template-columns: 1fr;
   }
+    .heading {
+    margin-bottom: 20px;
+  }
 }

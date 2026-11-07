@@ -1,90 +1,164 @@
+
+/* ========================================
+   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
+======================================== */
+
 :root {
+  /* Cores principais */
   --navy: #11194e;
   --purple: #6548a5;
   --pink: #ff70b8;
+
+  /* Cores complementares */
   --blue: #75c5ff;
   --green: #91dc72;
   --lavender: #e0def8;
+
+  /* Fundos e superfícies */
+  --background: #f8f7ff;
+  --surface: #ffffff;
+  --border: #e0def8;
+
+  /* Textos auxiliares */
+  --text-muted: #77718b;
 }
 
 * {
   box-sizing: border-box;
 }
 
-/* Foco acessível pelo teclado */
 *:focus-visible {
-  outline: 3px solid #FF70B8 !important;
-  outline-offset: 1px !important;
+  outline: 3px solid var(--pink);
+  outline-offset: 2px;
   border-radius: 5px;
-  box-shadow: 0 0 0 3px #fff;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
-
   color: var(--navy);
-  font-family: "Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Arial Rounded MT Bold', Arial, sans-serif;
 
   background:
-    radial-gradient(
-      ellipse at 0% 110%,
-      #ffc5eb 0 9%,
-      transparent 9.2%
-    ),
-    radial-gradient(
-      ellipse at 100% 110%,
-      #c2f6b9 0 9%,
-      transparent 9.2%
-    ),
-    linear-gradient(
-      120deg,
-      #f8f7ff,
-      #f0effa 55%,
-      #f9f7ff
-    );
+    radial-gradient(ellipse at 0% 110%, #ffc5eb 0 9%, transparent 9.2%),
+    radial-gradient(ellipse at 100% 110%, #c2f6b9 0 9%, transparent 9.2%),
+    linear-gradient(120deg, #f8f7ff, #f0effa 55%, #f9f7ff);
 }
 
-/* Estados vazios e mensagens */
+a {
+  color: #5b21b6;
+}
+
+/* ========================================
+   2. TÍTULOS
+======================================== */
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  min-width: 0;
+}
+
+.heading .spark {
+  flex-shrink: 0;
+  color: var(--pink);
+  font-size: 38px;
+  font-weight: 300;
+  line-height: 1;
+  transform: rotate(4deg);
+}
+
+.heading h1 {
+  position: relative;
+  margin: 0;
+  color: var(--navy);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.heading h1::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  left: 2px;
+  height: 5px;
+  border-radius: 9px;
+  background: var(--pink);
+  transform: rotate(-1deg);
+}
+
+/* ========================================
+   3. GRADE DE TAREFAS
+======================================== */
+
+.pagina-tarefas .grade {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px 20px;
+}
+
+.pagina-tarefas .grade app-cartao-tarefa:nth-child(3n + 1) {
+  --accent: var(--pink);
+}
+
+.pagina-tarefas .grade app-cartao-tarefa:nth-child(3n + 2) {
+  --accent: var(--blue);
+}
+
+.pagina-tarefas .grade app-cartao-tarefa:nth-child(3n) {
+  --accent: var(--green);
+}
+
+/* ========================================
+   4. ESTADOS VAZIOS, ERROS E CARREGAMENTO
+======================================== */
 
 .vazio {
   padding: 24px;
-  text-align: center;
+  margin: 20px 0;
   color: var(--purple);
   font-weight: 600;
+  text-align: center;
   background: #f8f5ff;
   border-radius: 12px;
-  margin: 20px 0;
 }
 
 .erro {
   padding: 24px;
+  margin-top: 20px;
   text-align: center;
   background: #f8f5ff;
   border: 1px solid rgba(255, 32, 32, 0.284);
   border-radius: 12px;
-  margin-top: 20px;
 }
 
 .erro-form {
   margin: 0;
   color: #b00020;
-  font-weight: 600;
   font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .erro-exclusao {
+  padding: 0;
+  margin: 10px 0 0;
   color: #c62850;
   font-size: 12px;
   line-height: 1.4;
-  margin: 10px 0 0;
-  padding: 0;
   white-space: normal;
   overflow-wrap: anywhere;
 }
 
-/* Carregamento */
+.erro button {
+  margin-left: 8px;
+  cursor: pointer;
+}
 
 .loading {
   display: flex;
@@ -96,11 +170,15 @@ body {
   color: var(--purple);
 }
 
+.loading p {
+  font-weight: 600;
+}
+
 .spinner {
   width: 40px;
   height: 40px;
   border: 4px solid #e5dcf5;
-  border-top: 4px solid var(--purple);
+  border-top-color: var(--purple);
   border-radius: 50%;
   animation: girar 0.8s linear infinite;
 }
@@ -109,16 +187,12 @@ body {
   display: inline-block;
   width: 14px;
   height: 14px;
+  margin-right: 8px;
+  vertical-align: middle;
   border: 4px solid #e5dcf5;
   border-right-color: transparent;
   border-radius: 50%;
   animation: girar 0.7s linear infinite;
-  vertical-align: middle;
-  margin-right: 8px;
-}
-
-.loading p {
-  font-weight: 600;
 }
 
 .carregando {
@@ -132,83 +206,29 @@ body {
   }
 }
 
-/* Links e títulos */
+/* ========================================
+   5. FORMULÁRIOS E DETALHES
+======================================== */
 
-a {
-  color: #5b21b6;
+.pagina-formulario {
+  width: 100%;
+  max-width: 792px;
+  min-width: 0;
+  margin-inline: auto;
 }
-
-.heading {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin: 20px 0 45px 8px;
-}
-
-.heading .spark {
-  color: var(--pink);
-  font-size: 42px;
-  font-weight: 300;
-  line-height: 1;
-  transform: rotate(4deg);
-}
-
-.heading h1 {
-  position: relative;
-  margin: 0;
-  font-size: 38px;
-  line-height: 1;
-  letter-spacing: -1.5px;
-}
-
-.heading h1::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: -18px;
-  left: 4px;
-  height: 6px;
-  border-radius: 9px;
-  background: var(--pink);
-  transform: rotate(-1deg);
-}
-
-/* Grade de tarefas */
-
-.grade {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 30px 20px;
-}
-
-/* Cores de destaque dos cartões */
-
-.grade app-cartao-tarefa:nth-child(3n + 1) {
-  --accent: var(--pink);
-}
-
-.grade app-cartao-tarefa:nth-child(3n + 2) {
-  --accent: var(--blue);
-}
-
-.grade app-cartao-tarefa:nth-child(3n) {
-  --accent: var(--green);
-}
-
-/* Campos de detalhes */
 
 .campos {
   display: grid;
   grid-template-columns: max-content 1fr;
   gap: 8px 20px;
   padding: 20px;
-  background: #fff;
-  border: 1px solid #e2e2ea;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 10px;
 }
 
 .campos dt {
-  color: #555;
+  color: var(--text-muted);
   font-weight: 600;
 }
 
@@ -216,47 +236,31 @@ a {
   margin: 0;
 }
 
-/* Lista de projetos */
-
-.lista-projetos {
-  display: grid;
-  gap: 10px;
-  padding: 0;
-  list-style: none;
-}
-
 .lista-projetos li {
   display: flex;
   justify-content: space-between;
   gap: 12px;
   padding: 14px 16px;
-  background: #fff;
-  border: 1px solid #e2e2ea;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 10px;
 }
 
-.lista-projetos li span {
-  color: #666;
-}
-
+.lista-projetos li span,
 .detalhes {
-  color: #666;
+  color: var(--text-muted);
 }
 
-/* Formulários */
-
-.pagina-formulario {
-  width: 100%;
-  max-width: 792px;
-  margin-inline: auto;
-}
-
-/* Botões */
+/* ========================================
+   6. BOTÕES
+======================================== */
 
 .botao,
-.botao-secundario {
+.botao-secundario,
+.botao-tarefa {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 10px 22px;
   font: inherit;
@@ -265,15 +269,21 @@ a {
   border: 2px solid var(--purple);
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s, transform 0.15s;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s,
+    color 0.15s,
+    transform 0.15s;
 }
 
-.botao {
-  color: #fff;
+.botao,
+.botao-tarefa {
+  color: var(--surface);
   background: var(--purple);
 }
 
-.botao:hover {
+.botao:hover,
+.botao-tarefa:hover {
   background: var(--navy);
   border-color: var(--navy);
   transform: translateY(-1px);
@@ -281,7 +291,7 @@ a {
 
 .botao-secundario {
   color: var(--purple);
-  background: #fff;
+  background: var(--surface);
 }
 
 .botao-secundario:hover {
@@ -290,47 +300,12 @@ a {
 
 .botao-tarefa {
   margin-top: 30px;
-  color: #fff;
-  background: #6c3bb8;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 22px;
-  font: inherit;
-  font-weight: 600;
-  text-decoration: none;
-  border: 2px solid var(--purple);
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s, transform 0.15s;
-}
-
-.botao-tarefa:hover {
-  background: var(--navy);
-  border-color: var(--navy);
-  transform: translateY(-1px);
-}
-
-/* Ações */
-
-.acoes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 0 0 24px;
-}
-
-/* Mensagens de erro e exclusão */
-
-.erro button {
-  margin-left: 8px;
-  cursor: pointer;
 }
 
 .botao-excluir {
+  padding: 10px 22px;
   margin-top: 30px;
   margin-left: 8px;
-  padding: 10px 22px;
   color: #a5104a;
   background: #ffe0eb;
   border: 1px solid #ff75b7;
@@ -344,45 +319,86 @@ a {
 }
 
 /* ========================================
-   RESPONSIVIDADE
+   7. ÁREAS DE AÇÕES
 ======================================== */
 
-/* Tablets e telas médias */
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 24px;
+}
+
+/* Cabeçalho da listagem */
+
+.pagina-tarefas .topo-tarefas {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.pagina-tarefas .topo-tarefas .heading {
+  flex: 1;
+  min-width: 0;
+}
+
+.pagina-tarefas .topo-tarefas .acoes {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  width: auto;
+  margin: 0;
+}
+
+/* Cabeçalho do Kanban */
+
+.pagina-quadro .topo {
+  margin-bottom: 24px;
+}
+
+/* ========================================
+   8. RESPONSIVIDADE
+======================================== */
+
+/* Tablets */
+
 @media (max-width: 1050px) {
-  .grade {
+  .pagina-tarefas .grade {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 /* Celulares */
+
 @media (max-width: 680px) {
-  .grade {
+  .pagina-tarefas .grade {
     grid-template-columns: 1fr;
     gap: 18px;
   }
-.arco {
+
+  .arco {
     display: none !important;
   }
 
   body {
-    background: linear-gradient(
-      120deg,
-      #f8f7ff,
-      #f0effa 55%,
-      #f9f7ff
-    );
+    background: linear-gradient(120deg, #f8f7ff, #f0effa 55%, #f9f7ff);
   }
+
   body::after {
-    content: "";
+    content: '';
     position: fixed;
     z-index: 0;
-    pointer-events: none;
-
-    left: 0;
     right: 0;
     bottom: 0;
-
+    left: 0;
     height: 135px;
+    pointer-events: none;
 
     background-image:
       radial-gradient(
@@ -401,24 +417,47 @@ a {
       );
 
     background-repeat: no-repeat;
-    background-size: 50% 135px, 50% 135px;
+    background-size: 50% 135px;
     background-position: left bottom, right bottom;
   }
+
   .heading {
     gap: 10px;
-    margin-left: 0;
-    margin-bottom: 38px;
   }
 
   .heading h1 {
-    font-size: 43px;
+    font-size: 32px;
   }
 
   .heading .spark {
-    font-size: 43px;
+    font-size: 34px;
   }
 
   .pagina-formulario {
     max-width: 100%;
+  }
+
+  .campos {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .campos dd {
+    margin-bottom: 10px;
+  }
+
+  /* Cabeçalho da listagem */
+
+  .pagina-tarefas .topo-tarefas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .pagina-tarefas .topo-tarefas .acoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
   }
 }

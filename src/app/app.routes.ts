@@ -11,14 +11,15 @@ import { EditarProjeto } from './paginas/editar-projeto/editar-projeto';
 import { QuadroTarefas } from './paginas/quadro-tarefas/quadro-tarefas';
 
 export const routes: Routes = [
-  { path: '', component: ListaTarefas, title: 'Tarefas' },
+  { path: '', component: QuadroTarefas, title: 'Quadro de tarefas' },
+  { path: 'tarefas', component: ListaTarefas, title: 'Tarefas' },
   { path: 'tarefas/nova', component: NovaTarefa, title: 'Nova tarefa' },
   { path: 'tarefas/:id', component: DetalheTarefa, title: 'Tarefa' },
   { path: 'tarefas/:id/editar', component: EditarTarefa, title: 'Editar tarefa' },
   { path: 'projetos', component: ListaProjetos, title: 'Projetos' },
-  { path: 'projetos/novo', component: NovoProjetoPagina, title: 'Novo Projeto'},
+  { path: 'projetos/novo', component: NovoProjetoPagina, title: 'Novo Projeto' },
   { path: 'projetos/:id', component: PaginaProjeto, title: 'Projeto' },
   { path: 'projetos/:id/editar', component: EditarProjeto, title: 'Editar projeto' },
-  { path: 'quadro', component: QuadroTarefas, title: 'Quadro de tarefas'},
+  { path: 'quadro', redirectTo: '', pathMatch: 'full' },
   { path: '**', component: NaoEncontrada, title: 'Página não encontrada' },
 ];

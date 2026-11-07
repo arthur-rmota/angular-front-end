@@ -13,11 +13,11 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 18px 24px;
-  margin-bottom: 36px;
+  margin-bottom: 24px;
 }
 
 .topo .heading {
-  margin: 0 0 0 8px;
+  margin: 0;
 }
 
 .topo .acoes {
