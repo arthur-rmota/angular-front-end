@@ -1,22 +1,37 @@
+
+:host {
+  display: block;
+  min-width: 0;
+}
+
 .visoes {
   display: inline-flex;
-  padding: 4px;
+  align-items: center;
   gap: 4px;
-  background: #ffffff;
-  border: 1px solid #dedcf5;
-  border-radius: 12px;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid #e6e0f3;
+  border-radius: 11px;
+  box-sizing: border-box;
 }
 
 .visoes a {
-  padding: 8px 18px;
-  border-radius: 9px;
-  color: #4b168f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 75px;
+  min-height: 36px;
+  padding: 7px 15px;
+  border-radius: 8px;
+  color: #62458e;
+  font-size: 0.88rem;
   font-weight: 600;
   text-decoration: none;
+  transition: background 0.2s, color 0.2s;
 }
 
-.visoes a:hover {
-  background: #f1ecfb;
+.visoes a:hover:not(.ativa) {
+  background: #f3effa;
 }
 
 .visoes a.ativa {
@@ -25,6 +40,23 @@
 }
 
 .visoes a:focus-visible {
-  outline: 3px solid #ff70b8;
+  outline: 3px solid #c9a9f2;
   outline-offset: 2px;
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+  .visoes {
+    display: flex;
+    width: 100%;
+    gap: 5px;
+  }
+
+  .visoes a {
+    flex: 1;
+    min-width: 0;
+    min-height: 40px;
+    padding: 8px;
+    font-size: 0.85rem;
+  }
 }

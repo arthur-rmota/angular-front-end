@@ -281,3 +281,128 @@ nav a.ativo {
     height: 23px;
   }
 }
+
+
+/* Organização da página de tarefas */
+.pagina-tarefas {
+  width: 100%;
+  min-width: 0;
+}
+
+.topo-tarefas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.topo-tarefas .heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topo-tarefas .heading h1 {
+  margin: 0;
+  color: #4b168f;
+}
+
+.topo-tarefas .acoes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.filtros-tarefas {
+  margin-bottom: 22px;
+  min-width: 0;
+}
+
+.pagina-tarefas .grade {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+}
+
+.pagina-tarefas .grade app-cartao-tarefa {
+  display: block;
+  min-width: 0;
+}
+
+/* Layout para celulares */
+@media (max-width: 600px) {
+  .conteudo {
+    padding: 16px 12px;
+  }
+
+  .topo-tarefas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .topo-tarefas .heading h1 {
+    font-size: 1.55rem;
+  }
+
+  .topo-tarefas .acoes {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 8px;
+    width: 100%;
+  }
+
+  .topo-tarefas .acoes > * {
+    min-width: 0;
+  }
+
+  .topo-tarefas .acoes .botao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    box-sizing: border-box;
+    padding: 9px 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.88rem;
+  }
+
+  .filtros-tarefas {
+    margin-bottom: 16px;
+  }
+
+  .pagina-tarefas .grade {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 13px;
+  }
+
+  .pagina-tarefas .vazio {
+    padding: 20px 12px;
+    text-align: center;
+  }
+
+  /* Reduz a interferência das decorações no celular */
+  .arco {
+    opacity: 0.45;
+  }
+
+  .decoracao,
+  .estrela-direita,
+  .estrela-inferior-esquerda,
+  .estrela-inferior-direita {
+    opacity: 0.65;
+  }
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 850px) {
+  .pagina-tarefas .grade {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+}

@@ -1,46 +1,68 @@
+
 <article class="cartao">
-  <span class="barra-lateral" aria-hidden="true"></span>
+  <div class="cartao-cabecalho">
+    <div class="titulo-container">
+      <span class="barra-lateral" aria-hidden="true"></span>
 
-  <img class="icone-docinho" src="docinho.webp" alt="" aria-hidden="true" />
-
-  <div class="cartao-conteudo">
-    <h3>
-      <a [routerLink]="['/tarefas', tarefa().id]">
-        {{ tarefa().titulo }}
-      </a>
-    </h3>
-
-    <div class="etiquetas">
-      <span class="status status-{{ tarefa().status }}">
-        {{ rotuloStatus[tarefa().status] }}
-      </span>
-
-      <span class="prioridade prioridade-{{ tarefa().prioridade }}">
-        {{ rotuloPrioridade[tarefa().prioridade] }}
-      </span>
+      <h3>
+        <a [routerLink]="['/tarefas', tarefa().id]">
+          {{ tarefa().titulo }}
+        </a>
+      </h3>
     </div>
 
-    <p class="info">
-      <span class="responsavel">
-        <span class="icone-info" aria-hidden="true">👤</span>
-        {{ tarefa().responsavel }}
-      </span>
-
-      <span class="prazo">
-        <span class="icone-info" aria-hidden="true">🗓️</span>
-        {{ formatarData(tarefa().prazo) }}
-      </span>
-    </p>
-
-    <div class="acoes">
-      <a [routerLink]="['/tarefas', tarefa().id, 'editar']" class="botao-tarefa">Editar tarefa</a>
-      <button type="button" class="botao-excluir" (click)="excluir()" [disabled]="excluindo()">
-        {{ excluindo() ? 'Excluindo...' : 'Excluir' }}
-      </button>
-
-      @if (erroExclusao()) {
-        <p class="erro-exclusao" role="alert">⚠ {{ erroExclusao() }}</p>
-      }
-    </div>
+    <img class="icone-docinho" src="docinho.webp" alt="" aria-hidden="true" />
   </div>
+
+  <div class="etiquetas">
+    <span class="status status-{{ tarefa().status }}">
+      {{ rotuloStatus[tarefa().status] }}
+    </span>
+
+    <span class="prioridade prioridade-{{ tarefa().prioridade }}">
+      {{ rotuloPrioridade[tarefa().prioridade] }}
+    </span>
+  </div>
+
+  <div class="cartao-descricao">
+    @if (tarefa().descricao) {
+      <p>{{ tarefa().descricao }}</p>
+    }
+  </div>
+
+  <div class="cartao-informacoes">
+    <span class="responsavel">
+      <span class="icone-info" aria-hidden="true">👤</span>
+      {{ tarefa().responsavel || 'Não informado' }}
+    </span>
+
+    <span class="prazo">
+      <span class="icone-info" aria-hidden="true">🗓️</span>
+      {{ formatarData(tarefa().prazo) }}
+    </span>
+  </div>
+
+  <div class="cartao-acoes">
+    <a
+      [routerLink]="['/tarefas', tarefa().id, 'editar']"
+      class="botao-tarefa"
+    >
+      Editar tarefa
+    </a>
+
+    <button
+      type="button"
+      class="botao-excluir"
+      (click)="excluir()"
+      [disabled]="excluindo()"
+    >
+      {{ excluindo() ? 'Excluindo...' : 'Excluir' }}
+    </button>
+  </div>
+
+  @if (erroExclusao()) {
+    <p class="erro-exclusao" role="alert">
+      ⚠ {{ erroExclusao() }}
+    </p>
+  }
 </article>

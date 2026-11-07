@@ -1,92 +1,100 @@
 
-:host { display: block; }
+:host {
+  display: block;
+  min-width: 0;
+}
 
 /* Área dos filtros */
 .filtros {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(220px, 1.5fr) minmax(160px, 1fr) minmax(160px, 1fr);
   align-items: end;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin: 24px 0;
-  padding: 16px 20px;
-  background: #ffffff;
-  border: 1px solid #dedcf5;
-  border-radius: 14px;
+  gap: 14px;
+  margin: 0 0 22px;
+  padding: 18px;
+  background: #fff;
+  border: 1px solid #e6e0f3;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgb(60 40 110 / 4%);
+  box-sizing: border-box;
 }
 
-/* Cada filtro */
+/* Campos */
 .campo-filtro {
   display: flex;
   flex-direction: column;
   gap: 7px;
+  min-width: 0;
 }
 
-/* Textos */
 .filtros label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #28145c;
+  color: #49316f;
+  font-size: 0.84rem;
+  font-weight: 650;
 }
 
-/* Seletores */
+/* Busca e seletores */
+.filtros input[type="search"],
 .filtros select {
-  min-width: 180px;
-  padding: 10px 12px;
-  border: 1px solid #d5d3e3;
-  border-radius: 9px;
-  background: #faf9ff;
-  color: #28145c;
-  font-family: inherit;
-  font-size: 14px;
-  cursor: pointer;
-  transition: border-color 0.2s;
-}
-
-.filtros select:focus {
-  outline: none;
-  border-color: #6842b5;
-}
-
-/* Campo de busca */
-.filtros input[type="search"] {
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
   box-sizing: border-box;
-  width: 260px;
-  max-width: 100%;
   padding: 10px 12px;
-  border: 1px solid #d5d3e3;
-  border-radius: 9px;
-  background: #faf9ff;
-  color: #28145c;
+  border: 1px solid #ddd6ed;
+  border-radius: 10px;
+  background: #fcfaff;
+  color: #352452;
   font-family: inherit;
-  font-size: 14px;
-}
-
-.filtros input[type="search"]:focus {
-  outline: none;
-  border-color: #6842b5;
+  font-size: 0.88rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .filtros input[type="search"]::placeholder {
-  color: #89849e;
+  color: #9690a5;
 }
 
-/* Adaptação para telas pequenas */
+.filtros input:focus,
+.filtros select:focus {
+  outline: none;
+  border-color: #936bc9;
+  box-shadow: 0 0 0 3px rgb(147 107 201 / 12%);
+}
+
+/* Tablets */
+@media (max-width: 850px) {
+  .filtros {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .campo-filtro:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Celulares */
 @media (max-width: 600px) {
   .filtros {
-    align-items: stretch;
-    flex-direction: column;
-    gap: 12px;
-    padding: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 9px;
+    margin-bottom: 16px;
+    padding: 13px;
+    border-radius: 13px;
   }
 
-  .campo-filtro {
-    width: 100%;
+  .campo-filtro:first-child {
+    grid-column: 1 / -1;
   }
 
-  .filtros select,
-  .filtros input[type="search"] {
-    box-sizing: border-box;
-    width: 100%;
-    min-width: 0;
+  .filtros label {
+    font-size: 0.78rem;
+  }
+
+  .filtros input[type="search"],
+  .filtros select {
+    min-height: 43px;
+    padding: 9px;
+    font-size: 0.82rem;
   }
 }

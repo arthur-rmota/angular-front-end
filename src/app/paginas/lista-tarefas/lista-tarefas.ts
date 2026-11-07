@@ -10,42 +10,61 @@ import { EstadoTarefas } from '../../servicos/estado-tarefas';
 @Component({
   selector: 'app-lista-tarefas',
   imports: [RouterLink, CartaoTarefa, FiltrosTarefas, AlternarVisao],
-  template: `
-<div class="heading"><span class="spark"></span><h1>Tarefas</h1></div>
-    <div class="acoes">
-      <app-alternar-visao />
-      <a routerLink="/tarefas/nova" class="botao">+ Nova tarefa</a>
-    </div>
-    
   
-<app-filtros-tarefas />
+template: `
+  <section class="pagina-tarefas">
+    <div class="topo-tarefas">
+      <div class="heading">
+        <span class="spark"></span>
+        <h1>Tarefas</h1>
+      </div>
+
+      <div class="acoes">
+        <app-alternar-visao />
+        <a routerLink="/tarefas/nova" class="botao">+ Nova tarefa</a>
+      </div>
+    </div>
+
+    <div class="filtros-tarefas">
+      <app-filtros-tarefas />
+    </div>
 
     @if (tarefas.isLoading()) {
       <div class="loading">
-        <div class="spinner"> </div>
+        <div class="spinner"></div>
         <p class="carregando">Carregando...</p>
       </div>
     } @else if (tarefas.error()) {
       <p class="erro" role="alert">
         ⚠ Não foi possível carregar os dados.
-        <button type="button" class="botao-secundario" (click)="tarefas.reload()">Tentar de novo</button>
+        <button
+          type="button"
+          class="botao-secundario"
+          (click)="tarefas.reload()"
+        >
+          Tentar de novo
+        </button>
       </p>
     } @else if (tarefas.hasValue()) {
       @if (estado.tarefasFiltradas().length > 0) {
         <div class="grade">
-        @for (tarefa of estado.tarefasFiltradas(); track tarefa.id) {
-          <app-cartao-tarefa [tarefa]="tarefa" (excluida)="tarefas.reload()" />
-        }
-      </div>
-    }@else {
-          @if (estado.busca().trim() || estado.status() || estado.prioridade()){
-            <p class="vazio"> Nenhuma Tarefa encontrada</p>
+          @for (tarefa of estado.tarefasFiltradas(); track tarefa.id) {
+            <app-cartao-tarefa
+              [tarefa]="tarefa"
+              (excluida)="tarefas.reload()"
+            />
+          }
+        </div>
+      } @else {
+        @if (estado.busca().trim() || estado.status() || estado.prioridade()) {
+          <p class="vazio">Nenhuma tarefa encontrada</p>
         } @else {
-          <p class="vazio"> Nenhuma Tarefa cadastrada </p>
+          <p class="vazio">Nenhuma tarefa cadastrada</p>
         }
       }
     }
-  `,
+  </section>
+`,
 })
 export class ListaTarefas {
   private api = inject(Api);

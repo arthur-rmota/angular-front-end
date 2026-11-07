@@ -25,7 +25,7 @@ export class FormularioTarefa {
 
   form = inject(FormBuilder).nonNullable.group({
     titulo: ['', Validators.required],
-    descricao: [''],
+    descricao: ['Insira uma descrição'],
     projetoId: ['', Validators.required],
     status: ['a-fazer' as Status, Validators.required],
     prioridade: ['media' as Prioridade, Validators.required],

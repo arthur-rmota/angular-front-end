@@ -1,32 +1,32 @@
 .cartao {
   position: relative;
   display: flex;
-  gap: 14px;
-  min-height: 148px;
+  flex-direction: column;
+  gap: 15px;
+  min-width: 0;
   box-sizing: border-box;
-  padding: 20px 18px 18px 22px;
-  background: #fff;
-  border: 1px solid #dedff3;
-  border-radius: 13px;
-  box-shadow: 0 1px 2px rgb(30 27 75 / 3%);
+  padding: 20px 20px 18px 25px;
+  background: linear-gradient(145deg, #ffffff 0%, #fcfaff 100%);
+  border: 1px solid #e6e0f3;
+  border-radius: 17px;
+  box-shadow: 0 3px 10px rgb(60 40 110 / 5%);
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Barra colorida lateral */
+/* Barra lateral conforme a prioridade */
 .barra-lateral {
   position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: 7px;
-  width: 6px;
+  top: 14px;
+  bottom: 14px;
+  left: 8px;
+  width: 5px;
   border-radius: 10px;
-  background: #7dc8ff;
+  background: #83ceff;
 }
 
-/* Cores da barra conforme a prioridade */
 .cartao:has(.prioridade-alta) .barra-lateral {
-  background: #ff75b7;
+  background: #f28bb8;
 }
 
 .cartao:has(.prioridade-media) .barra-lateral {
@@ -34,51 +34,49 @@
 }
 
 .cartao:has(.prioridade-baixa) .barra-lateral {
-  background: #91dc70;
+  background: #91d69b;
 }
 
-/* Conteúdo */
-.cartao-conteudo {
-  flex: 1;
+/* Cabeçalho */
+.cartao-cabecalho {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.titulo-container {
+  display: flex;
+  align-items: flex-start;
   min-width: 0;
-  padding-left: 4px;
+  flex: 1;
 }
 
 .cartao h3 {
-  position: relative;
-  padding-right: 32px;
-  margin: 0 0 14px;
-  color: #111b50;
-  font-size: 1.15rem;
-  font-weight: 750;
-  line-height: 1.35;
-  height: 2.6em;
-  overflow: hidden;
-}
-
-.cartao h3 img { 
-  position: absolute;
-  top: -5px;
-  right: 0;
-}
-
-.icone-docinho {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  width:30px;
-  height: 30px;
-  object-fit: contain;
-  z-index: 1;
+  min-width: 0;
+  margin: 0;
+  color: #33245f;
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 
 .cartao h3 a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .cartao h3 a:hover {
-  color: #6038a0;
+  color: #8056bd;
+}
+
+.icone-docinho {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
 }
 
 /* Etiquetas */
@@ -94,60 +92,76 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 27px;
+  min-height: 26px;
   box-sizing: border-box;
-  padding: 4px 13px;
+  padding: 5px 12px;
   border-radius: 999px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 600;
   line-height: 1.2;
   white-space: nowrap;
 }
 
 .status-a-fazer {
-  background: #dff1ff;
-  color: #183568;
+  background: #e7f2ff;
+  color: #34577e;
 }
 
 .status-em-andamento {
-  background: #d9efff;
-  color: #183568;
+  background: #e8e1ff;
+  color: #62499a;
 }
 
 .status-em-revisao {
-  background: #fff1c6;
-  color: #59451a;
+  background: #fff2d6;
+  color: #86632b;
 }
 
 .status-concluida {
-  background: #cef7df;
-  color: #087a39;
+  background: #ddf5e5;
+  color: #287447;
 }
 
 .prioridade-alta {
-  background: #ffe0eb;
-  color: #a5104a;
+  background: #ffe5ee;
+  color: #a33d65;
 }
 
 .prioridade-media {
-  background: #fff0c2;
-  color: #59451a;
+  background: #fff1d9;
+  color: #89632d;
 }
 
 .prioridade-baixa {
-  background: #e0efff;
-  color: #2458a5;
+  background: #e4f2ff;
+  color: #38658f;
 }
 
-/* Responsável e prazo */
-.cartao .info {
+/* Descrição */
+.cartao-descricao {
+  min-width: 0;
+  color: #77718b;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.cartao-descricao p {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+/* Informações */
+.cartao-informacoes {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 22px;
-  margin: 24px 0 0;
-  color: #4f5085;
-  font-size: 1rem;
+  gap: 12px 20px;
+  padding-top: 12px;
+  border-top: 1px solid #eee9f5;
+  color: #625a7d;
+  font-size: 0.88rem;
   line-height: 1.4;
 }
 
@@ -155,48 +169,209 @@
 .prazo {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 7px;
+  min-width: 0;
 }
 
 .icone-info {
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1;
 }
 
-/* Efeito discreto ao passar o mouse */
+/* Ações */
+.cartao-acoes {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 2px;
+}
+
+.botao-tarefa,
+.botao-excluir {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 35px;
+  box-sizing: border-box;
+  padding: 7px 15px;
+  border-radius: 9px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.botao-tarefa {
+  background: #eee7fa;
+  color: #62458e;
+  border: 1px solid #e3d8f3;
+}
+
+.botao-tarefa:hover {
+  background: #e2d5f5;
+}
+
+.botao-excluir {
+  background: #fff0f2;
+  color: #a64c60;
+  border: 1px solid #f4dce1;
+}
+
+.botao-excluir:hover:not(:disabled) {
+  background: #ffe1e7;
+}
+
+.botao-excluir:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.erro-exclusao {
+  margin: 0;
+  color: #b4233d;
+  font-size: 0.82rem;
+}
+
+/* Efeito ao passar o mouse */
 .cartao:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgb(60 40 110 / 8%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgb(60 40 110 / 10%);
+}
+
+/* Acessibilidade */
+.cartao a:focus-visible,
+.cartao button:focus-visible {
+  outline: 3px solid #b99ae8;
+  outline-offset: 3px;
 }
 
 /* Telas pequenas */
 @media (max-width: 600px) {
   .cartao {
-    min-height: 135px;
-    padding: 17px 13px 15px 19px;
-    border-radius: 11px;
+    gap: 13px;
+    padding: 17px 14px 15px 21px;
+    border-radius: 14px;
   }
 
   .cartao h3 {
     font-size: 1rem;
-    margin-bottom: 11px;
+  }
+
+  .icone-docinho {
+    width: 29px;
+    height: 29px;
   }
 
   .status,
   .prioridade {
-    min-height: 25px;
+    min-height: 24px;
     padding: 4px 10px;
-    font-size: 0.78rem;
+    font-size: 0.77rem;
   }
 
-  .cartao .info {
-    gap: 12px;
-    margin-top: 19px;
-    font-size: 0.85rem;
+  .cartao-informacoes {
+    gap: 10px 14px;
+    font-size: 0.82rem;
   }
 
-  .responsavel,
-  .prazo {
-    gap: 6px;
+  .cartao-acoes {
+    gap: 8px;
   }
+
+  .botao-tarefa,
+  .botao-excluir {
+    min-height: 33px;
+    padding: 6px 12px;
+    font-size: 0.82rem;
+  }
+}
+
+
+/* Ajustes para deixar o cartão mais compacto */
+.cartao {
+  gap: 9px;
+  padding: 15px 16px 14px 22px;
+}
+
+.cartao h3 {
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+
+.icone-docinho {
+  width: 30px;
+  height: 30px;
+}
+
+.status,
+.prioridade {
+  min-height: 24px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+}
+
+.cartao-descricao {
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+.cartao-informacoes {
+  gap: 9px 16px;
+  padding-top: 8px;
+  font-size: 0.84rem;
+}
+
+.cartao-acoes {
+  gap: 8px;
+  margin-top: 0;
+}
+
+.botao-tarefa,
+.botao-excluir {
+  min-height: 32px;
+  padding: 5px 13px;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 600px) {
+  .cartao {
+    gap: 8px;
+    padding: 14px 12px 13px 20px;
+  }
+}
+
+/* Padronização visual dos cartões */
+.cartao {
+  height: 100%;
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Títulos com espaço reservado para até duas linhas */
+.cartao h3 {
+  display: -webkit-box;
+  min-height: 2.6em;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+/* Descrições com até duas linhas */
+.cartao-descricao {
+  min-height: 2.7em;
+}
+
+.cartao-descricao p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+/* Botões alinhados na parte inferior */
+.cartao-acoes {
+  margin-top: auto;
 }
