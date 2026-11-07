@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+.heading {
+  margin-bottom: 20px;
+}
+
 /* ===== AÇÕES ===== */
 
 .acoes {
@@ -85,7 +89,10 @@
   border: 1px solid #e9e1f2;
   border-radius: 13px;
   text-decoration: none;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
 }
 
 .cartao-projeto:hover {
@@ -199,8 +206,5 @@
 
   .grade-projetos {
     grid-template-columns: 1fr;
-  }
-    .heading {
-    margin-bottom: 20px;
   }
 }
