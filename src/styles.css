@@ -318,6 +318,10 @@ a {
   background: #ffc9dd;
 }
 
+.heading {
+  margin-bottom: 20px;
+}
+
 /* ========================================
    7. ÁREAS DE AÇÕES
 ======================================== */
@@ -423,6 +427,7 @@ a {
 
   .heading {
     gap: 10px;
+    margin-bottom: 20px
   }
 
   .heading h1 {
