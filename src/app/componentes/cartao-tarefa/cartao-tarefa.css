@@ -375,3 +375,160 @@
 .cartao-acoes {
   margin-top: auto;
 }
+
+/* ===== Variante usada no quadro Kanban (classe .cartao-kanban no host) ===== */
+:host(.cartao-kanban) {
+  display: block;
+}
+
+:host(.cartao-kanban) .cartao {
+  gap: 10px;
+  height: auto;
+  min-height: 0;
+  padding: 14px 14px 12px;
+  background: #fff;
+  border-color: #ece6f6;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgb(60 40 110 / 5%), 0 4px 14px rgb(60 40 110 / 6%);
+}
+
+:host(.cartao-kanban) .cartao:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgb(60 40 110 / 6%), 0 10px 22px rgb(60 40 110 / 11%);
+}
+
+/* O status já aparece no cabeçalho da coluna; a prioridade ganha o destaque */
+:host(.cartao-kanban) .barra-lateral,
+:host(.cartao-kanban) .status {
+  display: none;
+}
+
+:host(.cartao-kanban) .etiquetas {
+  order: -1;
+  padding-right: 34px;
+}
+
+:host(.cartao-kanban) .prioridade {
+  gap: 6px;
+  min-height: 22px;
+  padding: 3px 10px 3px 8px;
+  font-size: 0.74rem;
+}
+
+:host(.cartao-kanban) .prioridade::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+:host(.cartao-kanban) .icone-docinho {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+}
+
+:host(.cartao-kanban) .cartao h3 {
+  min-height: 0;
+  font-size: 0.98rem;
+  line-height: 1.35;
+}
+
+:host(.cartao-kanban) .cartao-descricao {
+  min-height: 0;
+  font-size: 0.83rem;
+  line-height: 1.45;
+}
+
+:host(.cartao-kanban) .cartao-descricao:not(:has(p)) {
+  display: none;
+}
+
+:host(.cartao-kanban) .cartao-descricao p {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+/* Responsável à esquerda (com reticências) e prazo à direita */
+:host(.cartao-kanban) .cartao-informacoes {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 10px;
+  border-top-color: #f0ebf7;
+  font-size: 0.8rem;
+}
+
+:host(.cartao-kanban) .responsavel {
+  display: block;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:host(.cartao-kanban) .responsavel .icone-info {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-right: 3px;
+  border-radius: 50%;
+  background: #f1ebfa;
+  font-size: 0.72rem;
+  vertical-align: middle;
+}
+
+:host(.cartao-kanban) .prazo {
+  flex: none;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 8px;
+  background: #f6f2fc;
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+:host(.cartao-kanban) .prazo .icone-info {
+  font-size: 0.78rem;
+}
+
+/* Ações compactas (zera as margens que vêm do estilo global dos botões) */
+:host(.cartao-kanban) .cartao-acoes {
+  flex-wrap: nowrap;
+  gap: 6px;
+}
+
+:host(.cartao-kanban) .botao-tarefa,
+:host(.cartao-kanban) .botao-excluir {
+  min-height: 32px;
+  margin: 0;
+  padding: 5px 11px;
+  border-radius: 10px;
+  font-size: 0.78rem;
+}
+
+:host(.cartao-kanban) .botao-tarefa {
+  flex: 1;
+}
+
+/* Espaço vazio deixado pelo cartão enquanto ele é arrastado */
+:host(.cartao-kanban.cdk-drag-placeholder) .cartao {
+  visibility: hidden;
+}
+
+@media (max-width: 600px) {
+  :host(.cartao-kanban) .cartao {
+    padding: 14px 13px 12px;
+  }
+
+  :host(.cartao-kanban) .botao-tarefa,
+  :host(.cartao-kanban) .botao-excluir {
+    min-height: 38px;
+    font-size: 0.82rem;
+  }
+}

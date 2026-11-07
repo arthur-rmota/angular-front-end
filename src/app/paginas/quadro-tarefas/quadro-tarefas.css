@@ -1,247 +1,270 @@
 :host {
   display: block;
   width: 100%;
-  max-width: none;
   box-sizing: border-box;
   color: #302541;
 }
 
-/* Cartão que pode ser arrastado */
-[cdkDrag] {
-  cursor: grab;
-  transition:
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
+/* ===== TOPO: título + ações ===== */
+
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px 24px;
+  margin-bottom: 36px;
 }
 
-/* Enquanto estiver segurando o cartão */
-[cdkDrag]:active {
-  cursor: grabbing;
+.topo .heading {
+  margin: 0 0 0 8px;
 }
 
-/* Cartão durante o arraste */
-.cdk-drag-dragging {
-  cursor: grabbing !important;
-  opacity: 0.9;
+.topo .acoes {
+  align-items: center;
+  margin: 0;
 }
 
-/* Animação ao trocar de posição */
-.cdk-drag-animating {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-/* Coluna que está recebendo o cartão */
-.cdk-drop-list-dragging .cartoes {
-  transition: background-color 200ms ease;
-}
-
-/* Cartão que está sendo arrastado */
-.cdk-drag-preview {
-  border-radius: 12px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
-  transform: rotate(2deg);
-}
-
-/* Espaço deixado pelo cartão */
-.cdk-drag-placeholder {
-  opacity: 0.3;
-  border: 2px dashed var(--purple);
-  border-radius: 12px;
-}
-
-/* Suaviza a movimentação dos cartões */
-.cartoes.cdk-drop-list-dragging [cdkDrag]:not(.cdk-drag-placeholder) {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-
-
-
-/* ===== ÁREA DO QUADRO ===== */
+/* ===== QUADRO (desktop: 4 colunas lado a lado) ===== */
 
 .quadro {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  gap: 18px;
   align-items: stretch;
-
   width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 2px 0 18px;
-
-  box-sizing: border-box;
+  padding: 2px 0 24px;
 }
 
 /* ===== COLUNAS ===== */
 
 .coluna {
-  width: 100%;
+  --cor: #8b6bd0;
+  --suave: #ece6fb;
+  --texto: #54389a;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   min-width: 0;
-  height: 100%;
-  padding: 16px;
-
-  box-sizing: border-box;
+  min-height: 340px;
+  padding: 12px;
   border: 1px solid #e9e1f2;
-  border-radius: 15px;
-  background: #f8f6fb;
-  box-shadow: 0 3px 12px #38205208;
-
-  transition: box-shadow 0.2s ease;
+  border-radius: 20px;
+  background: #f6f3fb;
+  box-shadow: 0 4px 18px rgb(56 32 82 / 6%);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.coluna:hover {
-  box-shadow: 0 5px 16px #38205212;
+.coluna-a-fazer {
+  --cor: #5db4f2;
+  --suave: #e3f2ff;
+  --texto: #2f5f8a;
 }
 
-/* ===== TÍTULOS DAS COLUNAS ===== */
+.coluna-em-andamento {
+  --cor: #8b6bd0;
+  --suave: #ebe5fb;
+  --texto: #54389a;
+}
+
+.coluna-em-revisao {
+  --cor: #f0b04f;
+  --suave: #fff0d4;
+  --texto: #82602a;
+}
+
+.coluna-concluida {
+  --cor: #68c28a;
+  --suave: #e1f5e8;
+  --texto: #2f7048;
+}
+
+/* Coluna onde o cartão arrastado está (ou será solto) */
+.coluna:has(.cdk-drag-placeholder) {
+  border-color: var(--cor);
+  box-shadow: 0 0 0 4px var(--suave);
+}
+
+/* ===== CABEÇALHO DA COLUNA ===== */
+
+.coluna-topo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px 9px 12px;
+  border-radius: 13px;
+  background: var(--suave);
+}
 
 .coluna h2 {
   display: flex;
   align-items: center;
+  flex: 1;
   gap: 9px;
-
+  min-width: 0;
   margin: 0;
-  color: #49345f;
-  font-size: 15px;
-  font-weight: 750;
-  line-height: 1.4;
-
+  color: var(--texto);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.3;
   overflow-wrap: anywhere;
 }
 
 .coluna h2::before {
   content: '';
-  display: inline-block;
-  width: 9px;
-  height: 9px;
-  flex: 0 0 9px;
+  flex: 0 0 10px;
+  height: 10px;
   border-radius: 50%;
-  background: #9a7ac5;
+  background: var(--cor);
+  box-shadow: 0 0 0 3px rgb(255 255 255 / 75%);
 }
-
-.coluna:nth-child(1) h2::before {
-  background: #a58acb;
-}
-
-.coluna:nth-child(2) h2::before {
-  background: #648ee3;
-}
-
-.coluna:nth-child(3) h2::before {
-  background: #e5a34f;
-}
-
-.coluna:nth-child(4) h2::before {
-  background: #58ae86;
-}
-
-/* ===== CONTADOR DE TAREFAS ===== */
 
 .contador {
-  display: inline-block;
-  margin: 9px 0 14px;
-  padding: 4px 9px;
-
-  border: 1px solid #e7dcef;
-  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 8px;
+  box-sizing: border-box;
+  border-radius: 999px;
   background: #fff;
-  color: #79678d;
-
-  font-size: 12px;
-  font-weight: 600;
+  color: var(--texto);
+  font-size: 0.78rem;
+  font-weight: 700;
 }
 
-/* ===== CARTÕES ===== */
+/* ===== LISTA DE CARTÕES (área de soltura) ===== */
 
 .cartoes {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  gap: 10px;
-
-  width: 100%;
+  gap: 12px;
   min-width: 0;
-  min-height: 90px;
-  box-sizing: border-box;
+  min-height: 140px;
 }
 
-.cartoes::after {
-  content: '';
-  display: block;
-  flex: 0 0 270px;
-  width: 100%;
-  pointer-events: none;
-}
-
-/* ===== COLUNAS VAZIAS ===== */
+/* ===== COLUNA VAZIA ===== */
 
 .vazio {
   margin: 0;
-  padding: 22px 10px;
-
-  border: 1px dashed #d9cce7;
-  border-radius: 12px;
-
-  color: #8c7b9c;
-  font-size: 13px;
-  line-height: 1.5;
+  padding: 26px 12px;
+  border: 1.5px dashed #d9cce7;
+  border-radius: 14px;
+  background: transparent;
+  color: #9a8bab;
+  font-size: 0.85rem;
+  font-weight: 500;
   text-align: center;
 }
 
-/* Aviso oculto por padrão */
-.bloqueio-mobile {
+.cartoes:has(.cdk-drag-placeholder) .vazio {
   display: none;
 }
 
-/* Bloqueia a visualização em telas pequenas */
-@media (max-width: 767px) {
+/* ===== ARRASTAR E SOLTAR ===== */
 
-  .conteudo-desktop {
-    display: none !important;
+[cdkDrag] {
+  cursor: grab;
+}
+
+[cdkDrag]:active {
+  cursor: grabbing;
+}
+
+.cdk-drag-dragging {
+  cursor: grabbing !important;
+}
+
+/* Cartão que acompanha o cursor */
+.cdk-drag-preview {
+  border-radius: 16px;
+  box-shadow: 0 16px 34px rgb(75 22 143 / 22%);
+}
+
+/* Espaço reservado onde o cartão vai cair */
+.cdk-drag-placeholder {
+  border-radius: 16px;
+  background: #ece6fb;
+  outline: 2px dashed #b9a3e3;
+  outline-offset: -2px;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cartoes.cdk-drop-list-dragging [cdkDrag]:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Tela de toque: segurar para arrastar sem abrir menu/seleção de texto */
+@media (pointer: coarse) {
+  [cdkDrag] {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
   }
+}
 
-  .bloqueio-mobile {
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
+/* ===== TABLET E CELULAR: colunas em carrossel com encaixe ===== */
 
+@media (max-width: 1199px) {
+  .quadro {
     display: flex;
-    align-items: center;
+    gap: 14px;
+    width: auto;
+    margin-inline: calc(-1 * clamp(16px, 3vw, 48px));
+    padding: 2px clamp(16px, 3vw, 48px) 24px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: clamp(16px, 3vw, 48px);
+    scrollbar-width: thin;
+    scrollbar-color: #d9cce7 transparent;
+  }
+
+  /* Durante o arraste o encaixe é desligado para a rolagem automática fluir */
+  .quadro:has(.cdk-drop-list-dragging) {
+    scroll-snap-type: none;
+  }
+
+  .coluna {
+    flex: 0 0 min(84vw, 360px);
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 600px) {
+  .topo {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 22px;
+    margin-bottom: 32px;
+  }
+
+  .topo .heading h1 {
+    font-size: 32px;
+  }
+
+  .topo .acoes {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .topo .acoes .botao {
     justify-content: center;
-
-    padding: 24px;
+    min-height: 44px;
     box-sizing: border-box;
-
-    background: #f8f6fb;
+    border-radius: 10px;
   }
 
-  .aviso-mobile {
-    width: 100%;
-    max-width: 350px;
-    padding: 30px 22px;
-
-    text-align: center;
-
-    background: white;
-    border: 1px solid #e9e1f2;
-    border-radius: 20px;
-
-    box-shadow: 0 8px 25px #38205212;
-  }
-
-  .icone-mobile {
-    font-size: 45px;
-  }
-
-  .aviso-mobile h2 {
-    color: #49345f;
-    font-size: 22px;
-    margin: 16px 0 10px;
-  }
-
-  .aviso-mobile p {
-    color: #79678d;
-    font-size: 14px;
-    line-height: 1.6;
+  .coluna {
+    min-height: 0;
+    padding: 10px;
+    border-radius: 18px;
   }
 }

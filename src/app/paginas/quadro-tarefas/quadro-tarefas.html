@@ -1,12 +1,14 @@
-<div class="conteudo-desktop">
-  <div class="heading">
-    <span class="spark"></span>
-    <h1>Quadro de tarefas</h1>
-  </div>
+<div class="pagina-quadro">
+  <div class="topo">
+    <div class="heading">
+      <span class="spark"></span>
+      <h1>Quadro de tarefas</h1>
+    </div>
 
-  <div class="acoes">
-    <app-alternar-visao />
-    <a routerLink="/tarefas/nova" class="botao">+ Nova tarefa</a>
+    <div class="acoes">
+      <app-alternar-visao />
+      <a routerLink="/tarefas/nova" class="botao">+ Nova tarefa</a>
+    </div>
   </div>
 
   <app-filtros-tarefas />
@@ -26,46 +28,42 @@
   } @else {
     <div class="quadro" cdkDropListGroup>
       @for (coluna of colunas; track coluna.status) {
-        <section class="coluna">
-          <h2>{{ coluna.titulo }}</h2>
+        @let itens = tarefasPorStatus(coluna.status);
 
-          @if (tarefasPorStatus(coluna.status).length == 1) {
-            <span class="contador"> {{ tarefasPorStatus(coluna.status).length }} tarefa </span>
-          } @else if (tarefasPorStatus(coluna.status).length > 1) {
-            <span class="contador"> {{ tarefasPorStatus(coluna.status).length }} tarefas </span>
-          }
+        <section class="coluna coluna-{{ coluna.status }}">
+          <header class="coluna-topo">
+            <h2>{{ coluna.titulo }}</h2>
+            <span
+              class="contador"
+              [attr.aria-label]="itens.length + (itens.length === 1 ? ' tarefa' : ' tarefas')"
+            >
+              {{ itens.length }}
+            </span>
+          </header>
 
           <div
             class="cartoes"
             cdkDropList
-            [cdkDropListData]="tarefasPorStatus(coluna.status)"
+            [cdkDropListData]="itens"
             (cdkDropListDropped)="moverTarefa($event, coluna.status)"
           >
-            @for (tarefa of tarefasPorStatus(coluna.status); track tarefa.id) {
+            @for (tarefa of itens; track tarefa.id) {
               <app-cartao-tarefa
+                class="cartao-kanban"
                 cdkDrag
                 [cdkDragData]="tarefa"
+                [cdkDragStartDelay]="{ touch: 200, mouse: 0 }"
                 [tarefa]="tarefa"
                 (excluida)="tarefas.reload()"
               />
+            }
+
+            @if (itens.length === 0) {
+              <p class="vazio">Nenhuma tarefa</p>
             }
           </div>
         </section>
       }
     </div>
   }
-</div>
-
-<div class="bloqueio-mobile">
-  <div class="aviso-mobile">
-    <span class="icone-mobile">💻</span>
-
-    <h2>Acesso pelo computador</h2>
-
-    <p>
-      Esta aplicação foi desenvolvida para utilização em computadores.
-      Acesse pelo PC ou notebook para aproveitar todas as funcionalidades.
-    </p>
-    <a class="botao" routerLink="/" routerLinkActive="ativo">Voltar</a>
-  </div>
 </div>
