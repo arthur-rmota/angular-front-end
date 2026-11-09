@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, timeout, delay } from 'rxjs';
+import { environment } from '../environments/environment';
 import type { NovaTarefa, Projeto, Tarefa } from '../tipos';
 
 export type ProjetoComTarefas = Projeto & { tarefas: Tarefa[] };
@@ -13,7 +14,7 @@ function hoje(): string {
 @Injectable({ providedIn: 'root' })
 export class Api {
   private http = inject(HttpClient);
-  private url = 'http://localhost:3000';
+  private url = environment.apiUrl;
 
   listarTarefas(): Observable<Tarefa[]> {
     return this.http.get<Tarefa[]>(`${this.url}/tarefas`).pipe(timeout({first: 10000}));
