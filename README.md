@@ -1,10 +1,17 @@
-# Projeto G2 — Gerenciador de Tarefas Acadêmicas
+# Projeto G2 — Power Tasks | Gerenciador de Tarefas Acadêmicas
 
 ## 1. Apresentação
 
-O **Gerenciador de Tarefas Acadêmicas** é uma aplicação web desenvolvida no contexto acadêmico com o propósito de apoiar a organização e o acompanhamento de atividades relacionadas a projetos e disciplinas. O sistema permite registrar projetos, administrar tarefas vinculadas a eles e acompanhar o andamento das atividades por meio de diferentes formas de visualização.
+O **Power Tasks** é uma aplicação web desenvolvida no contexto acadêmico com o propósito de apoiar a organização e o acompanhamento de atividades relacionadas a projetos e disciplinas.
 
-A aplicação foi construída com Angular e TypeScript no frontend e utiliza o JSON Server como solução de API REST local para persistência dos dados durante o desenvolvimento.
+O sistema permite registrar projetos, administrar tarefas vinculadas a eles e acompanhar o andamento das atividades por meio de diferentes formas de visualização.
+
+A aplicação foi desenvolvida com Angular e TypeScript no frontend e utiliza o JSON Server como solução de API REST.
+
+### Acesse a aplicação
+
+- **Aplicação online:** [https://power-tasks-g2.netlify.app](https://power-tasks-g2.netlify.app)
+- **API hospedada:** [https://projeto-g2-front-end.onrender.com](https://projeto-g2-front-end.onrender.com)
 
 ## 2. Objetivos
 
@@ -52,7 +59,7 @@ As prioridades disponíveis são:
 
 ### 3.5 Visualização e filtragem
 
-A aplicação oferece visualização das tarefas em lista e em quadro Kanban. Também disponibiliza mecanismos de filtragem e busca para auxiliar na localização de atividades, considerando os critérios disponíveis na interface, como título, situação e prioridade.
+A aplicação oferece visualização das tarefas em lista e em quadro Kanban. Também disponibiliza mecanismos de filtragem e busca para auxiliar na localização de atividades, considerando critérios como título, situação e prioridade.
 
 ### 3.6 Quadro Kanban
 
@@ -68,32 +75,34 @@ O quadro Kanban organiza as tarefas em colunas correspondentes às situações d
 | Angular Reactive Forms | Construção e validação de formulários |
 | Angular CDK | Recursos de interação, incluindo arrastar e soltar |
 | RxJS | Composição e tratamento de operações assíncronas |
-| JSON Server | Disponibilização de uma API REST local |
+| JSON Server | Disponibilização de uma API REST |
 | Node.js e npm | Ambiente de execução e gerenciamento de dependências |
+| Netlify | Hospedagem da aplicação frontend |
+| Render | Hospedagem da API |
 
 ## 5. Requisitos para execução
 
-Antes de iniciar o projeto, é necessário possuir os seguintes recursos instalados:
+Antes de iniciar o projeto localmente, é necessário possuir:
 
 - **Node.js:** versão compatível com as dependências do projeto;
 - **npm:** gerenciador de pacotes do Node.js;
-- **Navegador atualizado:** para acessar a aplicação.
-
-Recomenda-se utilizar uma versão LTS do Node.js compatível com a versão do Angular utilizada no projeto.
+- **Navegador atualizado:** para acessar a aplicação;
+- **Git:** para clonar o repositório.
 
 ## 6. Instalação e configuração
 
 ### 6.1 Obtenção do código-fonte
 
-Faça o download ou clone do repositório do projeto e acesse o diretório raiz:
+Clone o repositório e acesse o diretório raiz:
 
 ```bash
-cd projeto-g2
+git clone https://github.com/arthur-rmota/angular-front-end.git
+cd angular-front-end
 ```
 
 ### 6.2 Instalação das dependências
 
-Execute o comando:
+Execute:
 
 ```bash
 npm install
@@ -103,25 +112,35 @@ Esse procedimento instala as dependências necessárias para o funcionamento e o
 
 ## 7. Execução da aplicação
 
-A execução local requer dois processos: o servidor da API e o servidor de desenvolvimento do Angular.
+A aplicação pode ser acessada pela versão publicada ou executada localmente.
 
-### 7.1 Inicialização da API
+### 7.1 Acesso à aplicação publicada
 
-Abra um terminal na pasta raiz do projeto e execute:
+A versão frontend está disponível em:
+
+https://power-tasks-g2.netlify.app
+
+A API utilizada pela versão publicada está hospedada no Render:
+
+https://projeto-g2-front-end.onrender.com
+
+### 7.2 Inicialização da API local
+
+Para executar a API localmente, abra um terminal na pasta raiz do projeto e execute:
 
 ```bash
 npx json-server db.json --port 3000
 ```
 
-A API será disponibilizada localmente no endereço:
+A API estará disponível em:
 
 ```text
 http://localhost:3000
 ```
 
-O arquivo `db.json`, localizado na raiz do projeto, contém os dados utilizados pelo JSON Server. Como essa API é local e baseada em arquivo, as alterações realizadas durante a execução são registradas nesse arquivo.
+O arquivo `db.json`, localizado na raiz do projeto, contém os dados utilizados pelo JSON Server durante o desenvolvimento local.
 
-### 7.2 Inicialização do frontend
+### 7.3 Inicialização do frontend
 
 Abra outro terminal, também na pasta raiz do projeto, e execute:
 
@@ -135,11 +154,11 @@ O servidor de desenvolvimento do Angular será iniciado. Por padrão, a aplicaç
 http://localhost:4200
 ```
 
-Mantenha os dois processos em execução enquanto utilizar o sistema.
+Mantenha os dois processos em execução enquanto utilizar o sistema localmente.
 
-### 7.3 Inicialização pelo Windows
+### 7.4 Inicialização pelo Windows
 
-No Windows, o projeto também disponibiliza o arquivo `iniciar.bat`. Ao executá-lo, o script verifica a disponibilidade do npm, instala as dependências caso a pasta `node_modules` não exista e inicia a API e o frontend em janelas separadas.
+O projeto também disponibiliza o arquivo `iniciar.bat`. Ao executá-lo, o script verifica a disponibilidade do npm, instala as dependências caso a pasta `node_modules` não exista e inicia a API e o frontend em janelas separadas.
 
 ## 8. API e estrutura dos dados
 
@@ -147,10 +166,10 @@ A aplicação utiliza o JSON Server para disponibilizar operações HTTP sobre o
 
 ### 8.1 Recursos disponíveis
 
-| Recurso | Endpoint |
-|---|---|
-| Tarefas | `http://localhost:3000/tarefas` |
-| Projetos | `http://localhost:3000/projetos` |
+| Recurso | Endpoint local | Endpoint publicado |
+|---|---|---|
+| Tarefas | `http://localhost:3000/tarefas` | `https://projeto-g2-front-end.onrender.com/tarefas` |
+| Projetos | `http://localhost:3000/projetos` | `https://projeto-g2-front-end.onrender.com/projetos` |
 
 ### 8.2 Operações HTTP
 
@@ -166,15 +185,10 @@ O JSON Server disponibiliza operações REST para os recursos:
 Exemplos de consulta:
 
 ```http
-GET http://localhost:3000/tarefas
-GET http://localhost:3000/projetos
-```
-
-A API também permite consultar um registro específico pelo identificador, por exemplo:
-
-```http
-GET http://localhost:3000/tarefas/1
-GET http://localhost:3000/projetos/1
+GET /tarefas
+GET /projetos
+GET /tarefas/1
+GET /projetos/1
 ```
 
 ### 8.3 Modelo de dados
@@ -210,21 +224,22 @@ A organização do código-fonte segue a estrutura de um projeto Angular. Os pri
 
 ```text
 projeto-g2/
-├── public/                 # Arquivos estáticos e recursos públicos
+├── public/                  # Arquivos estáticos e recursos públicos
 ├── src/
-│   ├── app/                # Componentes, páginas, serviços e recursos da aplicação
-│   ├── index.html          # Documento HTML principal
-│   ├── main.ts             # Inicialização do frontend
-│   ├── main.server.ts      # Inicialização no ambiente de renderização no servidor
-│   ├── server.ts           # Configuração do servidor SSR
-│   ├── styles.css          # Estilos globais
-│   └── tipos.ts            # Interfaces e tipos de dados
-├── db.json                 # Base de dados local utilizada pelo JSON Server
-├── db.seed.json            # Dados iniciais/semente
-├── iniciar.bat             # Script de inicialização para Windows
-├── angular.json            # Configurações do Angular CLI
-├── package.json            # Dependências e scripts npm
-└── README.md               # Documentação do projeto
+│   ├── app/                 # Componentes, páginas e serviços
+│   ├── environments/        # Configurações por ambiente
+│   ├── index.html           # Documento HTML principal
+│   ├── main.ts              # Inicialização do frontend
+│   ├── main.server.ts       # Inicialização SSR
+│   ├── server.ts            # Configuração do servidor SSR
+│   ├── styles.css           # Estilos globais
+│   └── tipos.ts             # Interfaces e tipos de dados
+├── db.json                  # Base de dados local
+├── db.seed.json             # Dados iniciais
+├── iniciar.bat              # Script de inicialização para Windows
+├── angular.json             # Configurações do Angular CLI
+├── package.json             # Dependências e scripts npm
+└── README.md                # Documentação do projeto
 ```
 
 ## 10. Comandos disponíveis
@@ -236,17 +251,22 @@ Os principais comandos definidos em `package.json` são:
 | `npm install` | Instala as dependências |
 | `npm run dev` | Inicia o servidor de desenvolvimento Angular |
 | `npm start` | Inicia o servidor de desenvolvimento Angular |
-| `npm run build` | Gera a versão de compilação do projeto |
+| `npm run build` | Gera a versão de produção do projeto |
 | `npm run watch` | Executa a compilação em modo de observação |
 | `npm test` | Executa os testes configurados |
 
-**Observação:** o script `npm run api` não está definido atualmente em `package.json`. Para iniciar a API, utilize `npx json-server db.json --port 3000`, conforme descrito na seção 7.1.
+**Observação:** o script `npm run api` não está definido atualmente em `package.json`. Para iniciar a API localmente, utilize `npx json-server db.json --port 3000`.
 
-## 11. Considerações sobre o ambiente de desenvolvimento
+## 11. Ambientes e publicação
 
-O JSON Server é utilizado neste projeto como mecanismo simplificado de simulação de uma API REST. Portanto, a configuração apresentada destina-se ao desenvolvimento e à demonstração local da aplicação. Ela não deve ser interpretada como uma arquitetura de backend pronta para produção.
+O projeto possui configurações distintas para desenvolvimento e produção, permitindo utilizar endereços diferentes para a API.
 
-O arquivo `db.json` funciona como armazenamento local dos registros. Recomenda-se manter uma cópia de segurança dos dados importantes antes de realizar alterações manuais ou substituir esse arquivo.
+- **Desenvolvimento:** utiliza a API local em `http://localhost:3000`.
+- **Produção:** utiliza a API hospedada no Render.
+
+A aplicação frontend está publicada no Netlify, enquanto a API está hospedada no Render.
+
+**Observação sobre a API:** o serviço gratuito do Render pode entrar em suspensão após períodos sem utilização. Além disso, o armazenamento baseado em arquivo do JSON Server em uma hospedagem gratuita não deve ser considerado persistência permanente de dados. Os registros podem ser perdidos em reinicializações ou novos deploys.
 
 ## 12. Equipe de desenvolvimento
 
@@ -260,4 +280,6 @@ Projeto desenvolvido pela equipe G2:
 
 O Gerenciador de Tarefas Acadêmicas busca contribuir para a organização das atividades desenvolvidas em projetos e disciplinas, oferecendo recursos para registrar tarefas, definir prioridades, acompanhar prazos e visualizar o andamento do trabalho.
 
-A aplicação reúne conceitos de desenvolvimento de interfaces web, organização de componentes, tipagem com TypeScript, formulários reativos e integração com serviços HTTP. Dessa forma, o projeto também constitui uma aplicação prática dos conhecimentos relacionados ao desenvolvimento frontend e à construção de sistemas web.
+A aplicação reúne conceitos de desenvolvimento de interfaces web, organização de componentes, tipagem com TypeScript, formulários reativos e integração com serviços HTTP.
+
+O projeto também conta com publicação online, permitindo o acesso à aplicação por meio de uma hospedagem frontend e de uma API disponibilizada na internet.
