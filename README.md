@@ -77,7 +77,7 @@ O quadro Kanban organiza as tarefas em colunas correspondentes às situações d
 | RxJS | Composição e tratamento de operações assíncronas |
 | JSON Server | Disponibilização de uma API REST |
 | Node.js e npm | Ambiente de execução e gerenciamento de dependências |
-| Netlify | Hospedagem da aplicação frontend |
+| Cloudflare pages | Hospedagem da aplicação frontend |
 | Render | Hospedagem da API |
 
 ## 5. Requisitos para execução
