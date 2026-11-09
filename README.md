@@ -10,7 +10,7 @@ A aplicação foi desenvolvida com Angular e TypeScript no frontend e utiliza o 
 
 ### Acesse a aplicação
 
-- **Aplicação online:** [https://power-tasks-g2.netlify.app](https://power-tasks-g2.netlify.app)
+- **Aplicação online:** [https://angular-front-end.pages.dev](https://angular-front-end.pages.dev)
 - **API hospedada:** [https://projeto-g2-front-end.onrender.com](https://projeto-g2-front-end.onrender.com)
 
 ## 2. Objetivos
