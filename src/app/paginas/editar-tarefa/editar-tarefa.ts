@@ -10,7 +10,7 @@ import { BotaoVoltar } from '../../componentes/botao-voltar/botao-voltar';
 
 @Component({
   selector: 'app-editar-tarefa',
-  imports: [ FormularioTarefa, NaoEncontrada, BotaoVoltar],
+  imports: [FormularioTarefa, NaoEncontrada, BotaoVoltar],
   template: `
     @if (tarefa.hasValue()) {
       <div class="pagina-formulario">
@@ -35,7 +35,10 @@ import { BotaoVoltar } from '../../componentes/botao-voltar/botao-voltar';
       <app-nao-encontrada />
     } @else {
       @if (tarefa.isLoading()) {
-        <p class="carregando">Carregando...</p> <div class="spinner"></div>
+        <div class="loading">
+          <div class="spinner"></div>
+          <p class="carregando">Carregando...</p>
+        </div>
       } @else if (tarefa.error()) {
         <p class="erro" role="alert">
           ⚠ Não foi possível carregar os dados. Verifique sua conexão e tente novamente
@@ -70,13 +73,16 @@ export class EditarTarefa {
     this.salvando.set(true);
     this.erroApi.set('');
 
-    this.api.atualizarTarefa(this.id(), tarefa).pipe(finalize(() => this.salvando.set(false))).subscribe({
-      next: () => {
-        this.router.navigate(['/tarefas', this.id()]);
-      },
-      error: () => {
-        this.erroApi.set('Não foi possível salvar as alterações, Tente novamente');
-      },
-    });
+    this.api
+      .atualizarTarefa(this.id(), tarefa)
+      .pipe(finalize(() => this.salvando.set(false)))
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/tarefas', this.id()]);
+        },
+        error: () => {
+          this.erroApi.set('Não foi possível salvar as alterações, Tente novamente');
+        },
+      });
   }
 }
