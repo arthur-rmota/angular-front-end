@@ -4,17 +4,16 @@ import { RouterLink } from '@angular/router';
 import { Api } from '../../api';
 import { formatarData, rotuloPrioridade, rotuloStatus } from '../../rotulos';
 import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
-import { BotaoVoltar } from '../../componentes/botao-voltar/botao-voltar';
 
 @Component({
   selector: 'app-detalhe-tarefa',
-  imports: [RouterLink, NaoEncontrada, BotaoVoltar],
+  imports: [RouterLink, NaoEncontrada],
   template: `
     @if (tarefa.hasValue()) {
       @let t = tarefa.value();
       <h1>{{ t.titulo }}</h1>
       <div class="acoes">
-        <app-botao-voltar />
+        <button type="button" class="botao" routerLink="/">← Voltar</button>
       </div>
       <dl class="campos">
         <dt>Descrição</dt><dd>{{ t.descricao }}</dd>
