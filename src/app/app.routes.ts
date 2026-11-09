@@ -21,5 +21,6 @@ export const routes: Routes = [
   { path: 'projetos/:id', component: PaginaProjeto, title: 'Projeto' },
   { path: 'projetos/:id/editar', component: EditarProjeto, title: 'Editar projeto' },
   { path: 'quadro', redirectTo: '', pathMatch: 'full' },
+  { path: 'index.csr', redirectTo: '', pathMatch: 'full' },
   { path: '**', component: NaoEncontrada, title: 'Página não encontrada' },
 ];
