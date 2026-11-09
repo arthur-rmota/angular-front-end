@@ -34,7 +34,7 @@ import { finalize } from 'rxjs';
     }
     @if (projeto.error()) {
       <p class="erro" role="alert">
-        ⚠ Não foi possível carregar os dados. Verifique se o json-server está rodando.
+        ⚠ Não foi possível carregar os dados. Verifique sua conexão e tente novamente
         <button type="button" class="botao-secundario" (click)="projeto.reload()">Tentar de novo</button>
       </p>
     }

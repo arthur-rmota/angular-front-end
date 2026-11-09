@@ -33,7 +33,7 @@ import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
     }
     @if (tarefa.error()) {
       <p class="erro" role="alert">
-        ⚠ Não foi possível carregar os dados.
+        ⚠ Não foi possível carregar os dados. Verifique sua conexão e tente novamente
         <button type="button" class="botao-secundario" (click)="tarefa.reload()">Tentar de novo</button>
       </p>
     }

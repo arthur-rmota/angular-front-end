@@ -36,7 +36,7 @@ template: `
       </div>
     } @else if (tarefas.error()) {
       <p class="erro" role="alert">
-        ⚠ Não foi possível carregar os dados.
+        ⚠ Não foi possível carregar os dados. Verifique sua conexão e tente novamente
         <button
           type="button"
           class="botao-secundario"
