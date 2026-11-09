@@ -16,27 +16,37 @@ import { NaoEncontrada } from '../nao-encontrada/nao-encontrada';
         <button type="button" class="botao" routerLink="/">← Voltar</button>
       </div>
       <dl class="campos">
-        <dt>Descrição</dt><dd>{{ t.descricao }}</dd>
-        <dt>Status</dt><dd>{{ rotuloStatus[t.status] }}</dd>
-        <dt>Prioridade</dt><dd>{{ rotuloPrioridade[t.prioridade] }}</dd>
-        <dt>Responsável</dt><dd>{{ t.responsavel }}</dd>
-        <dt>Prazo</dt><dd>{{ formatarData(t.prazo) }}</dd>
-        <dt>Projeto</dt><dd><a [routerLink]="['/projetos', t.projetoId]">Ver projeto</a></dd>
+        <dt>Descrição</dt>
+        <dd>{{ t.descricao }}</dd>
+        <dt>Status</dt>
+        <dd>{{ rotuloStatus[t.status] }}</dd>
+        <dt>Prioridade</dt>
+        <dd>{{ rotuloPrioridade[t.prioridade] }}</dd>
+        <dt>Responsável</dt>
+        <dd>{{ t.responsavel }}</dd>
+        <dt>Prazo</dt>
+        <dd>{{ formatarData(t.prazo) }}</dd>
+        <dt>Projeto</dt>
+        <dd><a [routerLink]="['/projetos', t.projetoId]">Ver projeto</a></dd>
         <p><a [routerLink]="['/tarefas', t.id, 'editar']" class="botao">Editar tarefa</a></p>
       </dl>
-      
     } @else if (naoExiste()) {
       <app-nao-encontrada />
     } @else {
       @if (tarefa.isLoading()) {
-      <p class="carregando">Carregando...</p>
-    }
-    @if (tarefa.error()) {
-      <p class="erro" role="alert">
-        ⚠ Não foi possível carregar os dados. Verifique sua conexão e tente novamente
-        <button type="button" class="botao-secundario" (click)="tarefa.reload()">Tentar de novo</button>
-      </p>
-    }
+        <div class="loading">
+          <div class="spinner"></div>
+          <p class="carregando">Carregando...</p>
+        </div>
+      }
+      @if (tarefa.error()) {
+        <p class="erro" role="alert">
+          ⚠ Não foi possível carregar os dados. Verifique sua conexão e tente novamente
+          <button type="button" class="botao-secundario" (click)="tarefa.reload()">
+            Tentar de novo
+          </button>
+        </p>
+      }
     }
   `,
 })
